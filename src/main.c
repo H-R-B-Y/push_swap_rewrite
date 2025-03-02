@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/02 19:56:38 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/02 20:05:17 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ Sort will happen in two intertwined phases
 	then look at the next divison
 
 so stack goes like:
-
 7
 3
 6
@@ -109,6 +108,24 @@ merge back:
 14
 18
 
+Note that all substacks of b sort in reverse order of stack a?
+this might not be needed I will have to figure that out
+
+I want this to be a recursive function (division)
+
+	if (size < 4) {
+		sort_base_case(size);  // Sort small chunks directly
+		return;
+	}
+	int half = size / 2;
+	// Move half of `a` to `b`
+	move_to_b(half);
+	// Recursively sort the first half (now in `b`)
+	sort_stack(half);
+	// Recursively sort the second half (remaining in `a`)
+	sort_stack(size - half);
+	// Merge sorted halves back into `a`
+	merge_sorted_chunks(size, half);
 */
 
 
