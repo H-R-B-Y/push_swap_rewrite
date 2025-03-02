@@ -1,0 +1,10 @@
+*.o
+*.pdf
+*.log
+*.py
+*.pyc
+*.out
+pycache
+__pycache__
+push_swap
+checker
