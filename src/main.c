@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/02 20:05:17 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/04 15:33:52 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,14 +129,48 @@ I want this to be a recursive function (division)
 */
 
 
+// int main(int argc, char **argv, char **env)
+// {
+// 	t_cdll	*cdll;
+
+// 	if (argc < 2)
+// 		return (0);
+// 	// validate and parse inputs
+// 	// if not validate or parse failed
+// 	//	return (1);
+// 	// any other data prep
+// 	// sort(data);
+// 	return (0);
+// }
+
+/*
+You have to write a program named push_swap that takes as an argument the stack
+a formatted as a list of integers. The first argument should be at the top of the
+stack (be careful about the order).
+*/
+
+// #define INT_MAX_STR "2147483647"
+// #define INT_MIN_STR "-2147483648"
+
+
 int main(int argc, char **argv, char **env)
 {
+	t_push_swap	meta;
+
 	if (argc < 2)
-		return (0);
-	// validate and parse inputs
-	// if not validate or parse failed
-	//	return (1);
-	// any other data prep
-	// sort(data);
+		return (1);
+	meta.stack_a = init_cdll();
+	if (parse_args(argc - 1, argv + 1, &meta.stack_a))
+	{
+		delete_cdll(&(meta.stack_a));
+		return (1);
+	}
+	print_stack(meta.stack_a);
+	meta.stack_b = init_cdll();
+	sort(&meta);
+	// print_operations(&meta);
+	print_stack(meta.stack_a);
+	delete_cdll(&(meta.stack_a));
+	delete_cdll(&(meta.stack_b));
 	return (0);
 }
