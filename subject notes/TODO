@@ -1,5 +1,6 @@
 1. print operations
 2. add check sorted function (dont need to split if already sorted)
+2.5 duplicate checker
 3. free the operatons list
 4. loop over operations to reduce down too double operations (rr = ra + rb)
 5. look into validity of greedy pushing
