@@ -1,7 +1,7 @@
-1. print operations
-2. add check sorted function (dont need to split if already sorted)
-2.5 duplicate checker
-3. free the operatons list
+
+
+1. STR TO INT IS FAILING FOR ANY NEGATIVE THAT HAS A ZERO IN IT
+
 4. loop over operations to reduce down too double operations (rr = ra + rb)
 5. look into validity of greedy pushing
 6. look into maybe swapping the top elements if one is smaller
