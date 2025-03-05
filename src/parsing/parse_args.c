@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:59:44 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 15:20:35 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 00:02:23 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	parse_args(int argc, char **argv, t_cdll **stack_a)
 {
 	int	data;
 
-	(*stack_a) = init_cdll();
 	if (!(*stack_a))
 		return (1);
 	while(argc)

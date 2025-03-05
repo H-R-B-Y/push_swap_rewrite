@@ -29,7 +29,10 @@ SRCS			:= $(SRC_DIR)/sorting/split.c \
 				$(SRC_DIR)/cdll/cdll_get.c \
 				$(SRC_DIR)/cdll/init_cdll.c \
 				$(SRC_DIR)/debug/print_stack.c \
-				$(SRC_DIR)/sorting/merging.c
+				$(SRC_DIR)/sorting/merging.c \
+				$(SRC_DIR)/debug/print_opperations.c \
+				$(SRC_DIR)/sorting/check_sorted.c \
+				$(SRC_DIR)/parsing/duplicate_check.c
 
 OBJS			:= ${SRCS:.c=.o}
 

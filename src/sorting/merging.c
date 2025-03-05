@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:49:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 17:33:58 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:37:11 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,9 @@ void	_push_loop(t_push_swap *meta, t_cdll *st[2], size_t count[2], size_t *rots)
 	{
 		rot_anon(meta, st[0]);  // Rotate A
 		(*rots)++;  // Track rotations
-		ft_putendl_fd("", 1);
-		print_stack(meta->stack_a);
-		print_stack(meta->stack_b);
-		ft_putendl_fd("", 1);
 	}
-
 	// Push B's top element to A
 	push_anon(meta, st[1], st[0]);
-	ft_putendl_fd("", 1);
-	print_stack(meta->stack_a);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
 }
 
 void	do_merge(t_push_swap *meta, t_cdll *st[2], size_t count[2])
@@ -55,46 +46,26 @@ void	do_merge(t_push_swap *meta, t_cdll *st[2], size_t count[2])
 		if (st[1]->head->data < st[0]->head->data)
 		{
 			push_anon(meta, st[1], st[0]);
-			ft_putendl_fd("", 1);
-			print_stack(meta->stack_a);
-			print_stack(meta->stack_b);
-			ft_putendl_fd("", 1);
 			count[1]--;
 			count[0]++;
 			idx++;
 			rot_anon(meta, st[0]);
-			ft_putendl_fd("", 1);
-			print_stack(meta->stack_a);
-			print_stack(meta->stack_b);
-			ft_putendl_fd("", 1);
 			rot_count++;
 
 		}
 		else
 		{
 			rot_anon(meta, st[0]);
-			ft_putendl_fd("", 1);
-			print_stack(meta->stack_a);
-			print_stack(meta->stack_b);
-			ft_putendl_fd("", 1);
 			rot_count++;
 		}
 	}
 	while (count[1])
 	{
 		push_anon(meta, st[1], st[0]);
-		ft_putendl_fd("", 1);
-		print_stack(meta->stack_a);
-		print_stack(meta->stack_b);
-		ft_putendl_fd("", 1);
 		count[1]--;
 		count[0]++;
 		idx++;
 		rot_anon(meta, st[0]);
-		ft_putendl_fd("", 1);
-		print_stack(meta->stack_a);
-		print_stack(meta->stack_b);
-		ft_putendl_fd("", 1);
 		rot_count++;
 	}
 	while (rot_count && rot_count--)

@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 17:07:05 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 00:28:04 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ss(t_push_swap *meta);
 void	sb(t_push_swap *meta);
 void	sa(t_push_swap *meta);
 
-
 void	rrot_anon(t_push_swap *meta, t_cdll *stack);
 void	rrr(t_push_swap *meta);
 void	rrb(t_push_swap *meta);
@@ -59,7 +58,6 @@ void	pa(t_push_swap *meta);
 int		parse_args(int argc, char **argv, t_cdll **stack_a);
 int		is_valid_int(char *str, int *out);
 
-
 // this might be a mess
 int		find_median_quickselect(t_cdll *stack, size_t count);
 
@@ -70,7 +68,7 @@ void	sort(t_push_swap *meta);
 // debug
 void	print_stack(t_cdll *st);
 
-int	find_median_quickselect(t_cdll *stack, size_t count);
+int		find_median_quickselect(t_cdll *stack, size_t count);
 
 
 size_t	do_median_split(t_push_swap *meta, t_cdll *st[2],	size_t count);
@@ -78,5 +76,11 @@ size_t	do_median_split(t_push_swap *meta, t_cdll *st[2],	size_t count);
 size_t	do_split(t_push_swap *meta, t_cdll *st[2],	size_t count);
 
 void	do_merge(t_push_swap *meta, t_cdll *st[2], size_t count[2]);
+
+void	print_operations(t_push_swap *meta);
+
+int		chunk_is_sorted(t_cdll *stack, size_t sz);
+
+int		contains_duplicate(t_cdll *stack);
 
 #endif

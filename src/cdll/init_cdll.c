@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:02:16 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 15:19:57 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 00:04:28 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,10 @@ void	delete_cdll(t_cdll	**list)
 	t_cdll_node	*tmp;
 	t_cdll_node	*node;
 
-	if (!list || !*list
-		|| !(*list)->head || !(*list)->tail)
+	if (!list || !*list)
 		return ;
 	tmp = (*list)->head;
-	while (tmp != (*list)->tail)
+	while (tmp && tmp != (*list)->tail)
 	{
 		node = tmp->next;
 		delete_node(&tmp);
@@ -61,6 +60,5 @@ void	delete_cdll(t_cdll	**list)
 	}
 	delete_node(&tmp);
 	free(*list);
-	*list = 0;
 	return ;
 }

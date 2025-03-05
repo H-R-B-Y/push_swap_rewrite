@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   append_operation.c                                 :+:      :+:    :+:   */
+/*   check_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 13:18:03 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/05 23:35:31 by hbreeze          ###   ########.fr       */
+/*   Created: 2025/03/06 00:09:34 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/03/06 00:20:21 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	append_operation(t_push_swap *meta, enum e_op op)
+int	chunk_is_sorted(t_cdll *stack, size_t sz)
 {
-	t_list	*node;
+	size_t		i;
+	t_cdll_node	*node;
 
-	if (op > OP_COUNT || !meta)
+	if (!stack || sz == 0)
 		return (0);
-	node = ft_lstnew((void *)((unsigned long)op));
-	if (!node)
-		return (0);
-	ft_lstadd_back(&meta->moves, node);
+	if (sz == 1)
+		return (1);
+	i = 1;
+	node = stack->head;
+	while (i < sz)
+	{
+		if (node->data > node->next->data)
+			return (0);
+		node = node->next;
+		i++;
+	}
 	return (1);
 }

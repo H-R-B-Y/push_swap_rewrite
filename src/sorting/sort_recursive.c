@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 17:35:26 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/05 23:37:48 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,9 @@ void	do_sort(t_push_swap *meta, t_cdll *st[2], size_t count)
 		split = do_median_split(meta, st, count);
 	else
 		split = do_split(meta, st, count);
-	ft_putendl_fd("", 1);
-	print_stack(meta->stack_a);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
 	do_sort(meta, (t_cdll *[2]){st[1], st[0]}, split);
-	ft_putendl_fd("", 1);
-	print_stack(meta->stack_a);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
 	do_sort(meta, st, count - split);
-	ft_putendl_fd("", 1);
-	print_stack(meta->stack_a);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
 	do_merge(meta, st, (size_t [2]){count - split, split});
-	ft_putendl_fd("", 1);
-	print_stack(meta->stack_a);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
 	return ;
 }
 
