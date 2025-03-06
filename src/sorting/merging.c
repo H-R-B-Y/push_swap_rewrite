@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:49:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/05 23:37:11 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 15:49:36 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,13 @@ void	do_merge(t_push_swap *meta, t_cdll *st[2], size_t count[2])
 {
 	size_t	rot_count = 0;
 	size_t	idx = 0;
+	t_cdll_node	*node;
+	long int	rots;
 
+	if (st[0]->head->data < st[1]->head->data)
+		node = st[0]->head;
+	else
+		node = st[1]->head;
 	while (count[1] && rot_count < count[0])
 	{
 		if (st[1]->head->data < st[0]->head->data)
@@ -68,6 +74,5 @@ void	do_merge(t_push_swap *meta, t_cdll *st[2], size_t count[2])
 		rot_anon(meta, st[0]);
 		rot_count++;
 	}
-	while (rot_count && rot_count--)
-		rrot_anon(meta, st[0]);
+	rotate_to_top(meta, node, st[0], count[0]);
 }

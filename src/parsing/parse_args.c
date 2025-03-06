@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:59:44 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 00:02:23 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:09:06 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	is_valid_int(char *str, int *out)
 {
+	long int	limit;
 	long int	i;
 	int			sign;
-	int			limit;
 
 	sign = 1;
 	i = 0;

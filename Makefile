@@ -32,7 +32,8 @@ SRCS			:= $(SRC_DIR)/sorting/split.c \
 				$(SRC_DIR)/sorting/merging.c \
 				$(SRC_DIR)/debug/print_opperations.c \
 				$(SRC_DIR)/sorting/check_sorted.c \
-				$(SRC_DIR)/parsing/duplicate_check.c
+				$(SRC_DIR)/parsing/duplicate_check.c \
+				$(SRC_DIR)/sorting/rotate_to_top.c
 
 OBJS			:= ${SRCS:.c=.o}
 

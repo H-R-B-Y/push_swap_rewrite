@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 00:28:04 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 15:48:28 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	mini_sort(t_push_swap *meta, t_cdll *st, size_t count);
 
 void	sort(t_push_swap *meta);
 
-// debug
+// debugmeta
 void	print_stack(t_cdll *st);
 
 int		find_median_quickselect(t_cdll *stack, size_t count);
@@ -82,5 +82,11 @@ void	print_operations(t_push_swap *meta);
 int		chunk_is_sorted(t_cdll *stack, size_t sz);
 
 int		contains_duplicate(t_cdll *stack);
+
+void	check_swap(t_push_swap *meta, t_cdll *st, size_t sz);
+
+void		rotate_to_top(t_push_swap *meta, t_cdll_node *node, t_cdll *st, size_t count);
+
+long int	distance_from_head(t_cdll *st, t_cdll_node *node, size_t sz);
 
 #endif

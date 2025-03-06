@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:22:16 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 00:32:15 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:09:53 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	contains_duplicate(t_cdll *stack)
 	if (!stack)
 		return (0);
 	idx[0] = stack->head;
-	while (idx[0] && idx[0] != stack->tail->prev)
+	while (idx[0] && idx[0] != stack->tail)
 	{
 		idx[1] = idx[0]->next;
 		while (idx[1] && idx[1] != stack->head)
