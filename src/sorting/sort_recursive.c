@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 16:02:49 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/06 18:44:53 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	do_sort(t_push_swap *meta, t_cdll *st[2], size_t count)
 			mini_sort(meta, st[0], count);
 			return ;
 		}
-		split = do_split(meta, st, count);
+		if (count == st[0]->count)
+			split = do_median_split(meta, st, count);
+		else
+			split = do_split(meta, st, count);
 		do_sort(meta, (t_cdll *[2]){st[1], st[0]}, split);
 		do_sort(meta, st, count - split);
 		do_merge(meta, st, (size_t [2]){count - split, split});
