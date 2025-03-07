@@ -31,7 +31,6 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/sorting/check_sorted.c \
 				$(SRC_DIR)/sorting/merge_to_a.c \
 				$(SRC_DIR)/sorting/merge_to_b.c \
-				$(SRC_DIR)/sorting/merging.c \
 				$(SRC_DIR)/sorting/mini_sort.c \
 				$(SRC_DIR)/sorting/rotate_to_top.c \
 				$(SRC_DIR)/sorting/sort_a.c \

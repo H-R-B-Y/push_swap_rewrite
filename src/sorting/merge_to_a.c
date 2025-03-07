@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:31:14 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 16:18:24 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:45:53 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	do_a_merge(t_push_swap *meta, size_t count_a, size_t count_b)
 	while (i++ < count_b)
 	{
 		while (meta->stack_a->head->data < meta->stack_b->head->data && rots++ < count_a)
-			ra(meta);
+			{ra(meta);print_stacks(meta);}
 		while (rots && meta->stack_a->tail->data > meta->stack_b->head->data && rots--)
-			rra(meta);
+			{rra(meta);print_stacks(meta);}
 		pa(meta);
 		count_a++;
 	}
 	while (rots && rots--)
-		rra(meta);
+		{rra(meta);print_stacks(meta);}
 }
