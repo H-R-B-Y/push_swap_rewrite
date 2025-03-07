@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   merge_to_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 15:26:17 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 16:11:25 by hbreeze          ###   ########.fr       */
+/*   Created: 2025/03/07 15:31:14 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/03/07 16:18:24 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	print_stack(t_cdll *st)
+void	do_a_merge(t_push_swap *meta, size_t count_a, size_t count_b)
 {
-	t_cdll_node	*node;
-
-	if (!st || st->count == 0)
+	size_t	i;
+	size_t	rots;
+	if (!meta)
 		return ;
-	node = st->head;
-	ft_printf("HEAD-> ");
-	while (node != st->tail)
+	rots = 0;
+	i = 0;
+	while (i++ < count_b)
 	{
-		ft_printf("%d, ", node->data);
-		node = node->next;
+		while (meta->stack_a->head->data < meta->stack_b->head->data && rots++ < count_a)
+			ra(meta);
+		while (rots && meta->stack_a->tail->data > meta->stack_b->head->data && rots--)
+			rra(meta);
+		pa(meta);
+		count_a++;
 	}
-	ft_printf("%d <-TAIL \n", node->data);
-	return ;
-}
-
-void	print_stacks(t_push_swap *meta)
-{
-	ft_putstr_fd("A: ", 1);
-	print_stack(meta->stack_a);
-	ft_putstr_fd("B: ", 1);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
+	while (rots && rots--)
+		rra(meta);
 }

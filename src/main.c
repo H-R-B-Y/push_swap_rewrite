@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 14:38:44 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:19:08 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int main(int argc, char **argv, char **env)
 	meta.stack_b = init_cdll();
 	// ft_printf("stack is sorted: %s\n", 
 	// (char *[2]){"no", "yes"}[chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
-	// ft_printf("stack contains duplicate: %s\n", 
-	// (char *[2]){"no", "yes"}[contains_duplicate(meta.stack_a)]);
+	ft_printf("stack contains duplicate: %s\n", 
+	(char *[2]){"no", "yes"}[contains_duplicate(meta.stack_a)]);
 	sort(&meta);
 	ft_printf("stack is sorted: %s\n", 
-	(char *[2]){"no", "yes"}[chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
+	(char *[2]){"no", "yes"}[a_chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
 	print_stack(meta.stack_a);
 	ft_printf("stack is sorted: %s\n\n", 
-	(char *[2]){"no", "yes"}[chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
+	(char *[2]){"no", "yes"}[a_chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
 	print_operations(&meta);
 	delete_cdll(&(meta.stack_a));
 	delete_cdll(&(meta.stack_b));

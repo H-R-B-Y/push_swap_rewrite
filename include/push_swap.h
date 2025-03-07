@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 15:48:28 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:11:28 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,18 @@ void	check_swap(t_push_swap *meta, t_cdll *st, size_t sz);
 void		rotate_to_top(t_push_swap *meta, t_cdll_node *node, t_cdll *st, size_t count);
 
 long int	distance_from_head(t_cdll *st, t_cdll_node *node, size_t sz);
+
+void	do_a_sort(t_push_swap *meta, size_t count);
+void	do_b_sort(t_push_swap *meta, size_t count);
+int	a_chunk_is_sorted(t_cdll *stack, size_t sz);
+int	b_chunk_is_sorted(t_cdll *stack, size_t sz);
+void	a_micro_sort(t_push_swap *meta);
+void	a_mini_sort(t_push_swap *meta, size_t count);
+void	b_micro_sort(t_push_swap *meta);
+void	b_mini_sort(t_push_swap *meta, size_t count);
+void	do_a_merge(t_push_swap *meta, size_t count_a, size_t count_b);
+void	do_b_merge(t_push_swap *meta, size_t count_a, size_t count_b);
+
+void	print_stacks(t_push_swap *meta);
 
 #endif

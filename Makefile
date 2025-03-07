@@ -14,10 +14,7 @@ LIBFT_DIR		:= $(abspath $(LIB_DIR)/libft)
 LIBFT			:= $(LIBFT_DIR)/libft.a
 
 SRC_DIR			:= ./src
-SRCS			:= $(SRC_DIR)/sorting/split.c \
-				$(SRC_DIR)/sorting/sort_recursive.c \
-				$(SRC_DIR)/sorting/mini_sort.c \
-				$(SRC_DIR)/quick_select/quick_select.c \
+SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/operations/append_operation.c \
 				$(SRC_DIR)/operations/rrot_operations.c \
 				$(SRC_DIR)/operations/swap_operations.c \
@@ -29,11 +26,18 @@ SRCS			:= $(SRC_DIR)/sorting/split.c \
 				$(SRC_DIR)/cdll/cdll_get.c \
 				$(SRC_DIR)/cdll/init_cdll.c \
 				$(SRC_DIR)/debug/print_stack.c \
-				$(SRC_DIR)/sorting/merging.c \
 				$(SRC_DIR)/debug/print_opperations.c \
-				$(SRC_DIR)/sorting/check_sorted.c \
 				$(SRC_DIR)/parsing/duplicate_check.c \
-				$(SRC_DIR)/sorting/rotate_to_top.c
+				$(SRC_DIR)/sorting/check_sorted.c \
+				$(SRC_DIR)/sorting/merge_to_a.c \
+				$(SRC_DIR)/sorting/merge_to_b.c \
+				$(SRC_DIR)/sorting/merging.c \
+				$(SRC_DIR)/sorting/mini_sort.c \
+				$(SRC_DIR)/sorting/rotate_to_top.c \
+				$(SRC_DIR)/sorting/sort_a.c \
+				$(SRC_DIR)/sorting/sort_b.c \
+				$(SRC_DIR)/sorting/sort_recursive.c \
+				$(SRC_DIR)/sorting/split.c
 
 OBJS			:= ${SRCS:.c=.o}
 
