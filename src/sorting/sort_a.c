@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:17:51 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 16:53:34 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/10 14:54:53 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	do_a_sort(t_push_swap *meta, size_t count)
 	if (!meta)
 		return ;
 
-	if (!a_chunk_is_sorted(meta->stack_a, count))
+	if (meta->stack_a->count > 0 && !a_chunk_is_sorted(meta->stack_a, count))
 	{
 		if (count <= 3)
 		{
 			a_mini_sort(meta, count);
 			return ;
 		}
-		if (count == meta->stack_a->count)
+		if (count > 11)
 			split = do_median_split(meta, (t_cdll *[2]){meta->stack_a, meta->stack_b}, count);
 		else
 			split = do_split(meta, (t_cdll *[2]){meta->stack_a, meta->stack_b}, count);
