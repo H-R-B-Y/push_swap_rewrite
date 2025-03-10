@@ -25,6 +25,7 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/cdll/push_cdll.c \
 				$(SRC_DIR)/cdll/cdll_get.c \
 				$(SRC_DIR)/cdll/init_cdll.c \
+				$(SRC_DIR)/cdll/cdll_get_minmax.c \
 				$(SRC_DIR)/debug/print_stack.c \
 				$(SRC_DIR)/debug/print_opperations.c \
 				$(SRC_DIR)/parsing/duplicate_check.c \

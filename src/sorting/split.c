@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:26:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 14:50:00 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:30:56 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_swap(t_push_swap *meta, t_cdll *st, size_t sz)
 		swap_anon(meta, st);
 }
 
-size_t	do_median_split(t_push_swap *meta, t_cdll *st[2],	size_t count)
+size_t	do_median_split(t_push_swap *meta, t_cdll *st[2], size_t count, int rotate)
 {
 	size_t		i[2]; // idx and pushed
 	int			median;
@@ -42,7 +42,7 @@ size_t	do_median_split(t_push_swap *meta, t_cdll *st[2],	size_t count)
 			rot_anon(meta, st[0]);
 		print_stacks(meta);
 	}
-	while (rots > 0 && rots != st[0]->count && rots-- )
+	while (rotate && rots > 0 && rots != st[0]->count && rots-- )
 		{rrot_anon(meta, st[0]);}
 	return (i[1]);
 }

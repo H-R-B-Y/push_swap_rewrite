@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 16:11:28 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:30:39 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	print_stack(t_cdll *st);
 int		find_median_quickselect(t_cdll *stack, size_t count);
 
 
-size_t	do_median_split(t_push_swap *meta, t_cdll *st[2],	size_t count);
+size_t	do_median_split(t_push_swap *meta, t_cdll *st[2],	size_t count, int rotate);
 
 size_t	do_split(t_push_swap *meta, t_cdll *st[2],	size_t count);
 
@@ -91,8 +91,8 @@ long int	distance_from_head(t_cdll *st, t_cdll_node *node, size_t sz);
 
 void	do_a_sort(t_push_swap *meta, size_t count);
 void	do_b_sort(t_push_swap *meta, size_t count);
-int	a_chunk_is_sorted(t_cdll *stack, size_t sz);
-int	b_chunk_is_sorted(t_cdll *stack, size_t sz);
+int		a_chunk_is_sorted(t_cdll *stack, size_t sz);
+int		b_chunk_is_sorted(t_cdll *stack, size_t sz);
 void	a_micro_sort(t_push_swap *meta);
 void	a_mini_sort(t_push_swap *meta, size_t count);
 void	b_micro_sort(t_push_swap *meta);

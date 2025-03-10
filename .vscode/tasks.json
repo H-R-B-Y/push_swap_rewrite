@@ -28,7 +28,9 @@
 			"type": "shell",
 			"command": "make",
 			"args": [
-				"CFLAGS=\"-g3 -o0\""
+				"CFLAGS=\"-g3 -o0\"",
+				"all",
+				"clean"
 			],
 			"problemMatcher": [],
 			"options": {
