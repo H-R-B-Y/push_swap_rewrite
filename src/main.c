@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 13:24:55 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/10 17:31:28 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int main(int argc, char **argv, char **env)
 	ft_printf("stack is sorted: %s\n", 
 	(char *[2]){"no", "yes"}[a_chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
 	print_stack(meta.stack_a);
-	ft_printf("stack is sorted: %s\n\n", 
-	(char *[2]){"no", "yes"}[a_chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
 	print_operations(&meta);
+	ft_printf("\nstack is sorted: %s\n\n", 
+	(char *[2]){"no", "yes"}[a_chunk_is_sorted(meta.stack_a, meta.stack_a->count)]);
 	ft_printf("Count of ops: %d", ft_lstsize(meta.moves));
 	delete_cdll(&(meta.stack_a));
 	delete_cdll(&(meta.stack_b));
