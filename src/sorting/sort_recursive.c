@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 15:28:42 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 15:42:33 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	sort(t_push_swap *meta)
 	push_anon(meta, meta->stack_a, meta->stack_b);
 	push_anon(meta, meta->stack_a, meta->stack_b);
 	b_mini_sort(meta, 3);
-	while (meta->stack_a->count > 3)
+	while (!(meta->stack_a->count < 3) && !(a_chunk_is_sorted(meta->stack_a, meta->stack_a->count)))
 	{
 		b_optimal_push(meta);
 	}
