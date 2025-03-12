@@ -6,13 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 17:31:28 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 12:04:38 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static inline void	do_nothing(void *ptr)
+void	do_nothing(void *ptr)
 {
 	(void)ptr;
 }

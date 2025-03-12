@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:17:51 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 17:32:31 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 14:37:16 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	do_a_sort(t_push_swap *meta, size_t count)
 			split = do_median_split(meta, (t_cdll *[2]){meta->stack_a, meta->stack_b}, count, count != meta->stack_a->count);
 		else
 			split = do_split(meta, (t_cdll *[2]){meta->stack_a, meta->stack_b}, count);
-		if (split > 30)
-			do_b_sort(meta, split);
+		// if (split > 30)
+		// do_b_sort(meta, split);
 		do_a_sort(meta, count - split);
 		// if (count != meta->stack_a->count)
 		do_a_merge(meta, count - split, split);

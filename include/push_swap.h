@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 15:30:39 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 12:37:54 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,18 @@ void	do_a_merge(t_push_swap *meta, size_t count_a, size_t count_b);
 void	do_b_merge(t_push_swap *meta, size_t count_a, size_t count_b);
 
 void	print_stacks(t_push_swap *meta);
+
+t_cdll_node	*b_find_position(t_cdll *stack, int number);
+t_cdll_node	*a_find_position(t_cdll *stack, int number);
+
+int		append_operation_to_list(t_list **p, enum e_op op);
+size_t	ops_to_top(t_push_swap *meta, t_cdll *st, t_cdll_node *node, t_list **list);
+
+void	do_nothing(void *ptr);
+
+void	do_ops(t_push_swap *meta, t_list *ops);
+
+void	a_optimal_push(t_push_swap *meta);
+void	b_optimal_push(t_push_swap *meta);
 
 #endif

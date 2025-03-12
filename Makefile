@@ -20,6 +20,7 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/operations/swap_operations.c \
 				$(SRC_DIR)/operations/rot_operations.c \
 				$(SRC_DIR)/operations/push_operations.c \
+				$(SRC_DIR)/operations/do_ops.c \
 				$(SRC_DIR)/parsing/parse_args.c \
 				$(SRC_DIR)/cdll/pop_cdll.c \
 				$(SRC_DIR)/cdll/push_cdll.c \
@@ -37,7 +38,11 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/sorting/sort_a.c \
 				$(SRC_DIR)/sorting/sort_b.c \
 				$(SRC_DIR)/sorting/sort_recursive.c \
-				$(SRC_DIR)/sorting/split.c
+				$(SRC_DIR)/sorting/split.c \
+				$(SRC_DIR)/calculations/find_correct_place.c \
+				$(SRC_DIR)/calculations/optimal_push.c \
+				\
+
 
 OBJS			:= ${SRCS:.c=.o}
 

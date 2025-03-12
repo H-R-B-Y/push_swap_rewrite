@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:27:55 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 16:57:35 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 12:29:26 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 static void	update_check_minmax(t_cdll *list, t_cdll_node *node)
 {
-	if (node->data > list->max)
+	if (node->data > list->max || list->max_node == 0)
 	{
 		list->max = node->data;
 		list->max_node = node;
 	}
-	if (node->data < list->min)
+	if (node->data < list->min || list->min_node == 0)
 	{
 		list->min = node->data;
 		list->min_node = node;

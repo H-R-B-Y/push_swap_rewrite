@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:36:10 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 16:57:11 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 14:04:19 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 static void	calc_check_minmax(t_cdll *list, t_cdll_node *node)
 {
+	if (list->count == 0)
+	{
+		list->min_node = 0;
+		list->max_node = 0;
+		return ;
+	}
 	if (node == list->max_node)
 		cdll_get_max(list);
 	if (node == list->min_node)
