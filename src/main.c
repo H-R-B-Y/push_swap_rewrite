@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 12:04:38 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 17:19:29 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int main(int argc, char **argv, char **env)
 	delete_cdll(&(meta.stack_a));
 	delete_cdll(&(meta.stack_b));
 	ft_lstclear(&(meta.moves), &do_nothing);
+	// Note: Memory leak here with the blacklist.
 	return (0);
 }
