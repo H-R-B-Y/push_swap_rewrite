@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 14:27:43 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 17:00:06 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,15 @@
 
 int	_swap(t_cdll *st)
 {
-	t_cdll_node temp;
+	t_cdll_node *temp;
+	t_cdll_node *temp2;
 
 	if (!st || st->count < 2)
 		return (0);
-	temp.data = st->head->data;
-	st->head->data = st->head->next->data;
-	st->head->next->data = temp.data;
-	if (st->head->data == st->min)
-		st->min_node = st->head;
-	else if (st->head->next->data == st->min)
-		st->min_node = st->head->next;
-	if (st->head->data == st->max)
-		st->max_node = st->head;
-	else if (st->head->next->data == st->max)
-		st->max_node = st->head->next;
+	temp = cdll_pop_front(st);
+	temp2 = cdll_pop_front(st);
+	cdll_push_front(st, temp);
+	cdll_push_front(st, temp2);
 	return (1);
 }
 

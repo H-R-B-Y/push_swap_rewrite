@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 14:49:23 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 17:14:10 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_list	*find_optimal_push_for_nodes(t_push_swap *meta, t_cdll *st, t_cdll_node *
 
 // Push from b to a
 // so find best value in b to push to a
-void	a_optimal_push(t_push_swap *meta)
+int	a_optimal_push(t_push_swap *meta)
 {
 	t_list	*p[2]; // actual vs temp;
 	size_t	p_count[2]; // actual vs temp;
@@ -100,10 +100,11 @@ void	a_optimal_push(t_push_swap *meta)
 	do_ops(meta, p[0]);
 	print_stacks(meta);
 	ft_lstclear(&p[0], (void *)do_nothing);
+	return (1);
 }
 
 // Push from a to b
-void	b_optimal_push(t_push_swap *meta)
+int	b_optimal_push(t_push_swap *meta)
 {
 	t_list	*p[2]; // actual vs temp;
 	size_t	p_count[2]; // actual vs temp;
@@ -118,6 +119,12 @@ void	b_optimal_push(t_push_swap *meta)
 	ft_bzero(p, sizeof(t_list *) * 2);
 	while (i < meta->stack_a->count)
 	{
+		if (node_is_blacklist(node, meta->blacklist))
+		{
+			node = node->next;
+			i++;
+			continue ;
+		}
 		p_count[1] = create_operations_list(meta, meta->stack_a, node, &p[1]);
 		if (p_count[1] < p_count[0])
 		{
@@ -132,7 +139,16 @@ void	b_optimal_push(t_push_swap *meta)
 		i++;
 	}
 	// and need to perform the actual operations
-	do_ops(meta, p[0]);
-	print_stacks(meta);
-	ft_lstclear(&p[0], (void *)do_nothing);
+	if (ft_lstsize(p[0]) > 0)
+	{
+		do_ops(meta, p[0]);
+		print_stacks(meta);
+		ft_lstclear(&p[0], (void *)do_nothing);
+		return (1);
+	}
+	else
+	{
+		ft_lstclear(&p[0], (void *)do_nothing);
+		return (0);
+	}
 }

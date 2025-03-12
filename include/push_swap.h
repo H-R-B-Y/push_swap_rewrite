@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 12:37:54 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 17:06:05 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ typedef struct s_push_swap	t_push_swap;
 
 struct s_push_swap
 {
-	t_cdll	*stack_a;
-	t_cdll	*stack_b;
-	t_list	*moves;
-	size_t	move_count;
+	t_cdll		*stack_a;
+	t_cdll		*stack_b;
+	t_list		*moves;
+	size_t		move_count;
+	t_cdll_node	**blacklist;
 };
 
 enum e_op
@@ -112,7 +113,11 @@ void	do_nothing(void *ptr);
 
 void	do_ops(t_push_swap *meta, t_list *ops);
 
-void	a_optimal_push(t_push_swap *meta);
-void	b_optimal_push(t_push_swap *meta);
+int	a_optimal_push(t_push_swap *meta);
+int	b_optimal_push(t_push_swap *meta);
+
+t_cdll_node	**find_cont(t_cdll *stack);
+
+int	node_is_blacklist(t_cdll_node *node, t_cdll_node **blacklist);
 
 #endif

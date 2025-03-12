@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 15:42:33 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/12 17:07:31 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 
 void	sort(t_push_swap *meta)
 {
+	
+
+	meta->blacklist = find_cont(meta->stack_a);
 	// size_t	split;
 
 	// if (meta->stack_a->count <= 3)
@@ -47,10 +50,11 @@ void	sort(t_push_swap *meta)
 	b_mini_sort(meta, 3);
 	while (!(meta->stack_a->count < 3) && !(a_chunk_is_sorted(meta->stack_a, meta->stack_a->count)))
 	{
-		b_optimal_push(meta);
+		if (!b_optimal_push(meta))
+			break ;
 	}
 
-	// rotate_to_top(meta, meta->stack_b->max_node, meta->stack_b, meta->stack_b->count);
+	rotate_to_top(meta, meta->stack_a->min_node, meta->stack_a, meta->stack_a->count);
 	// while (meta->stack_b->count > 0)
 	// 	pa(meta);
 	a_mini_sort(meta, 3);
