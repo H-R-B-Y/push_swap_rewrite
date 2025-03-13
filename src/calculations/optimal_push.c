@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 17:14:10 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:47:56 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ size_t	create_operations_list(t_push_swap *meta, t_cdll *st, t_cdll_node *node, 
 		append_operation_to_list(ops, PA);
 		count++;
 	}
+	if (count > 2)
+		count = cost_reduce(meta, ops);
 	return (count);
 }
 

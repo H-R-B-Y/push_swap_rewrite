@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 17:06:05 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/13 13:45:53 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,7 @@ int	b_optimal_push(t_push_swap *meta);
 t_cdll_node	**find_cont(t_cdll *stack);
 
 int	node_is_blacklist(t_cdll_node *node, t_cdll_node **blacklist);
+
+size_t		cost_reduce(t_push_swap *meta, t_list **ops);
 
 #endif

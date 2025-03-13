@@ -43,6 +43,7 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/calculations/optimal_push.c \
 				$(SRC_DIR)/calculations/longest_cont.c \
 				$(SRC_DIR)/calculations/node_is_blacklist.c \
+				$(SRC_DIR)/calculations/cost_reduction.c \
 				\
 
 
