@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:20:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/13 16:59:41 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/13 19:57:00 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,46 @@ size_t	count_similar(t_list *p, enum e_op a)
 /*
 THIS IS WHERE THE ERROR IS HARVEY!!!!!!!!!!
 */
-size_t remove_similar(t_list **ops, enum e_op op, size_t count)
+// size_t remove_similar(t_list **ops, enum e_op op, size_t count)
+// {
+// 	t_list	*idx[2];
+
+// 	idx[0] = (*ops);
+// 	while (idx[0] && idx[0]->next && (enum e_op)(unsigned long)idx[0]->next->content != op)
+// 		idx[0] = idx[0]->next;
+// 	idx[1] = idx[0]->next;
+// 	while (idx[1] && (enum e_op)(unsigned long)idx[1]->content == op && count)
+// 	{
+// 		idx[0]->next = idx[1]->next;
+// 		free(idx[1]);
+// 		idx[1] = idx[0]->next;
+// 		count--;
+// 	}
+// 	if (count && idx[0] == (*ops) && (enum e_op)(unsigned long)idx[0]->next->content == op)
+// 	{
+// 		count--;
+// 		(*ops) = idx[0]->next;
+// 		free(idx[0]);
+// 	}
+// 	return (ft_lstsize(*ops));
+// }
+
+void	print_op(void *op)
 {
-	t_list	*idx[2];
+	ft_printf("%s, ", ((char *[OP_COUNT]){
+		"pa", "pb", "sa", "sb", "ss", "ra",
+		"rb", "rr", "rra", "rrb", "rrr"
+		})[(enum e_op)(unsigned long)op]);
+}
+
+size_t	remove_similar(t_list **ops, enum e_op op, size_t count)
+{
+	t_list *idx[2];
 
 	idx[0] = (*ops);
-	while (idx[0] && idx[0]->next && (enum e_op)(unsigned long)idx[0]->next->content != op)
-		idx[0] = idx[0]->next;
+	if ((enum e_op)(unsigned long)idx[0]->content != op)
+		while (idx[0] && idx[0]->next && (enum e_op)(unsigned long)idx[0]->next->content != op)
+			idx[0] = idx[0]->next;
 	idx[1] = idx[0]->next;
 	while (idx[1] && (enum e_op)(unsigned long)idx[1]->content == op && count)
 	{
@@ -62,12 +95,19 @@ size_t remove_similar(t_list **ops, enum e_op op, size_t count)
 		free(idx[1]);
 		idx[1] = idx[0]->next;
 		count--;
+		// ft_printf("Reducing: ");
+		// ft_lstiter(*ops, print_op);
+		// ft_printf("\n");
 	}
-	if (count && idx[0] == (*ops) && (enum e_op)(unsigned long)idx[0]->next->content == op)
+	while (count && idx[0] == (*ops) && (enum e_op)(unsigned long)idx[0]->content == op)
 	{
 		count--;
 		(*ops) = idx[0]->next;
 		free(idx[0]);
+		idx[0] = (*ops);
+		// ft_printf("Reducing: ");
+		// ft_lstiter(*ops, print_op);
+		// ft_printf("\n");
 	}
 	return (ft_lstsize(*ops));
 }
@@ -87,13 +127,7 @@ void	append_similar(t_list **ops, enum e_op op, size_t count)
 	}
 }
 
-void	print_op(void *op)
-{
-	ft_printf("%s, ", ((char *[OP_COUNT]){
-		"pa", "pb", "sa", "sb", "ss", "ra",
-		"rb", "rr", "rra", "rrb", "rrr"
-		})[(enum e_op)(unsigned long)op]);
-}
+
 
 size_t	cost_reduce(t_push_swap *meta, t_list **ops)
 {
@@ -102,9 +136,9 @@ size_t	cost_reduce(t_push_swap *meta, t_list **ops)
 	size_t		removable;
 	t_list		*idx;
 
-	ft_printf("Reducing: ");
-	ft_lstiter(*ops, print_op);
-	ft_printf("\n");
+	// ft_printf("Reducing: ");
+	// ft_lstiter(*ops, print_op);
+	// ft_printf("\n");
 	op[0] = (enum e_op)(unsigned long)(*ops)->content;
 	if (op[0] == PA || op[0] == PB)
 		return (0);
@@ -116,23 +150,23 @@ size_t	cost_reduce(t_push_swap *meta, t_list **ops)
 		return (ft_lstsize(*ops));
 	counts[0] = count_similar((*ops), op[0]);
 	counts[1] = count_similar(idx, op[1]);
-	removable = ul_min(counts[0], counts[1]);
-	remove_similar(ops, op[0], removable);
-	remove_similar(ops, op[1],	removable);
-	append_similar(ops, op[0],	removable);
-	ft_printf("Reducing: ");
-	ft_lstiter(*ops, print_op);
-	ft_printf("\n");
-	ft_printf("Removed: %d of %s and %s \n",
-		removable,
-		((char *[OP_COUNT]){
-		"pa", "pb", "sa", "sb", "ss", "ra",
-		"rb", "rr", "rra", "rrb", "rrr"
-		})[(enum e_op)(unsigned long)op[0]],
-		((char *[OP_COUNT]){
-		"pa", "pb", "sa", "sb", "ss", "ra",
-		"rb", "rr", "rra", "rrb", "rrr"
-		})[(enum e_op)(unsigned long)op[1]]
-	);
+
+	remove_similar(ops, op[0], ul_min(counts[0], counts[1]));
+	remove_similar(ops, op[1], ul_min(counts[0], counts[1]));
+	append_similar(ops, op[0], ul_min(counts[0], counts[1]));
+	// ft_printf("Reducing: ");
+	// ft_lstiter(*ops, print_op);
+	// ft_printf("\n");
+	// ft_printf("Removed: %d of %s and %s \n",
+	// 	ul_min(counts[0], counts[1]),
+	// 	((char *[OP_COUNT]){
+	// 	"pa", "pb", "sa", "sb", "ss", "ra",
+	// 	"rb", "rr", "rra", "rrb", "rrr"
+	// 	})[(enum e_op)(unsigned long)op[0]],
+	// 	((char *[OP_COUNT]){
+	// 	"pa", "pb", "sa", "sb", "ss", "ra",
+	// 	"rb", "rr", "rra", "rrb", "rrr"
+	// 	})[(enum e_op)(unsigned long)op[1]]
+	// );
 	return (ft_lstsize(*ops));
 }
