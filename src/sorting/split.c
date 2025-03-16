@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:26:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 15:30:56 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 15:10:29 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	check_swap(t_push_swap *meta, t_cdll *st, size_t sz)
 	if (sz <= 1)
 		return ;
 	if (st == meta->stack_a && st->head->data > st->head->next->data)
-		swap_anon(meta, st);
+		swap_anon(meta, st, 0);
 	else if (st == meta->stack_b && st->head->data < st->head->next->data)
-		swap_anon(meta, st);
+		swap_anon(meta, st, 0);
 }
 
 size_t	do_median_split(t_push_swap *meta, t_cdll *st[2], size_t count, int rotate)
@@ -36,14 +36,14 @@ size_t	do_median_split(t_push_swap *meta, t_cdll *st[2], size_t count, int rotat
 	{
 		if (st[0]->head->data < median && ++i[1])
 		{
-			push_anon(meta, st[0], st[1]);
+			push_anon(meta, st[0], st[1], 0);
 		}
 		else if (++rots)
-			rot_anon(meta, st[0]);
+			rot_anon(meta, st[0], 0);
 		print_stacks(meta);
 	}
 	while (rotate && rots > 0 && rots != st[0]->count && rots-- )
-		{rrot_anon(meta, st[0]);}
+		{rrot_anon(meta, st[0], 0);}
 	return (i[1]);
 }
 
@@ -58,7 +58,7 @@ size_t	do_split(t_push_swap *meta, t_cdll *st[2],	size_t count)
 	{
 		
 		print_stacks(meta);
-		push_anon(meta, st[0], st[1]);
+		push_anon(meta, st[0], st[1], 0);
 		i++;
 	}
 	return (max);

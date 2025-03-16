@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:26:13 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 15:25:26 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 15:09:42 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	a_micro_sort(t_push_swap *meta)
 	if (!meta)
 		return ;
 	if (meta->stack_a->head->data > meta->stack_a->head->next->data)
-		sa(meta);
+		sa(meta, 0);
 }
 
 void	a_mini_sort(t_push_swap *meta, size_t count)
@@ -33,9 +33,9 @@ void	a_mini_sort(t_push_swap *meta, size_t count)
 	if (meta->stack_a->head->next->data
 		> meta->stack_a->head->next->next->data)
 	{
-		ra(meta);
+		ra(meta, 0);
 		a_micro_sort(meta);
-		rra(meta);
+		rra(meta, 0);
 	}
 	a_micro_sort(meta);
 }
@@ -45,7 +45,7 @@ void	b_micro_sort(t_push_swap *meta)
 	if (!meta)
 		return ;
 	if (meta->stack_b->head->data < meta->stack_b->head->next->data)
-		sb(meta);
+		sb(meta, 0);
 }
 
 void	b_mini_sort(t_push_swap *meta, size_t count)
@@ -61,9 +61,9 @@ void	b_mini_sort(t_push_swap *meta, size_t count)
 	if (meta->stack_b->head->next->data
 		< meta->stack_b->head->next->next->data)
 	{
-		rb(meta);
+		rb(meta, 0);
 		b_micro_sort(meta);
-		rrb(meta);
+		rrb(meta, 0);
 	}
 	b_micro_sort(meta);
 }

@@ -20,6 +20,7 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/operations/swap_operations.c \
 				$(SRC_DIR)/operations/rot_operations.c \
 				$(SRC_DIR)/operations/push_operations.c \
+				$(SRC_DIR)/operations/get_opposite.c \
 				$(SRC_DIR)/operations/do_ops.c \
 				$(SRC_DIR)/parsing/parse_args.c \
 				$(SRC_DIR)/cdll/pop_cdll.c \
@@ -31,12 +32,8 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/debug/print_opperations.c \
 				$(SRC_DIR)/parsing/duplicate_check.c \
 				$(SRC_DIR)/sorting/check_sorted.c \
-				$(SRC_DIR)/sorting/merge_to_a.c \
-				$(SRC_DIR)/sorting/merge_to_b.c \
 				$(SRC_DIR)/sorting/mini_sort.c \
 				$(SRC_DIR)/sorting/rotate_to_top.c \
-				$(SRC_DIR)/sorting/sort_a.c \
-				$(SRC_DIR)/sorting/sort_b.c \
 				$(SRC_DIR)/sorting/sort_recursive.c \
 				$(SRC_DIR)/sorting/split.c \
 				$(SRC_DIR)/calculations/find_correct_place.c \
@@ -44,6 +41,8 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/calculations/longest_cont.c \
 				$(SRC_DIR)/calculations/node_is_blacklist.c \
 				$(SRC_DIR)/calculations/cost_reduction.c \
+				$(SRC_DIR)/calculations/optimal_push_new.c \
+				$(SRC_DIR)/calculations/calculate_next_best.c \
 				\
 
 

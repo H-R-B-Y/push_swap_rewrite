@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 15:20:49 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 13:35:43 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@ int	_rotate(t_cdll *st)
 	return (1);
 }
 
-void	ra(t_push_swap *meta)
+void	ra(t_push_swap *meta, int silent)
 {
 	if (!meta)
 		return ;
-	if (_rotate(meta->stack_a))
+	if (_rotate(meta->stack_a) && !silent)
 		append_operation(meta, RA);
 }
 
-void	rb(t_push_swap *meta)
+void	rb(t_push_swap *meta, int silent)
 {
 	if (!meta)
 		return ;
-	if (_rotate(meta->stack_b))
+	if (_rotate(meta->stack_b) && !silent)
 		append_operation(meta, RB);
 }
 
-void	rr(t_push_swap *meta)
+void	rr(t_push_swap *meta, int silent)
 {
 	int	operation;
 
@@ -48,20 +48,23 @@ void	rr(t_push_swap *meta)
 		operation |= RA;
 	if (meta->stack_b->count > 1 && _rotate(meta->stack_b))
 		operation |= RB;
-	if (operation == (RA | RB))
-		append_operation(meta, RR);
-	else if (operation == 0)
-		return;
-	else
-		append_operation(meta, operation);
+	if (!silent)
+	{
+		if (operation == (RA | RB))
+			append_operation(meta, RR);
+		else if (operation == 0)
+			return;
+		else
+			append_operation(meta, operation);
+	}
 }
 
-void	rot_anon(t_push_swap *meta, t_cdll *stack)
+void	rot_anon(t_push_swap *meta, t_cdll *stack, int silent)
 {
 	if (!meta || !stack)
 		return ;
 	if (stack == meta->stack_a)
-		ra(meta);
+		ra(meta, silent);
 	else if (stack == meta->stack_b)
-		rb(meta);
+		rb(meta, silent);
 }

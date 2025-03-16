@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:09:34 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 15:18:31 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 13:45:46 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,14 @@ int	b_chunk_is_sorted(t_cdll *stack, size_t sz)
 		i++;
 	}
 	return (1);
+}
+
+int	anon_is_sorted(t_push_swap *meta, t_cdll *stack, size_t sz)
+{
+	if (stack == meta->stack_a)
+		return (a_chunk_is_sorted(stack, sz));
+	if (stack == meta->stack_b)
+		return (b_chunk_is_sorted(stack, sz));
+	else
+		return (0);
 }

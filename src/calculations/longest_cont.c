@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 16:57:25 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 14:59:56 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_cdll_node	*_find_arr(t_cdll *stack, size_t *len)
 	return (max_node);
 }
 
-t_cdll_node	**find_cont(t_cdll *stack)
+t_cdll_node	**find_cont(t_push_swap *meta, t_cdll *stack)
 {
 	t_cdll_node	**node_arr;
 	size_t		arr_len;
@@ -75,5 +75,6 @@ t_cdll_node	**find_cont(t_cdll *stack)
 		start = start->next;
 		i++;
 	}
+	meta->black_list_count = arr_len;
 	return (node_arr);
 }

@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:20:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/13 19:57:00 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 12:37:34 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,6 @@ void	append_similar(t_list **ops, enum e_op op, size_t count)
 		count--;
 	}
 }
-
-
 
 size_t	cost_reduce(t_push_swap *meta, t_list **ops)
 {

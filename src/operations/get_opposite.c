@@ -1,53 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_ops.c                                           :+:      :+:    :+:   */
+/*   get_opposite.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 13:38:37 by hbreeze          ###   ########.fr       */
+/*   Created: 2025/03/16 13:39:24 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/03/16 15:08:27 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	_do_op(t_push_swap *meta, enum e_op op, int silent)
+int	get_opposite_operations(enum e_op op)
 {
-	if (!meta || op >= OP_COUNT)
-		return ;
 	if (op == PA)
-		pa(meta, silent);
+		return (PB);
 	else if (op == PB)
-		pb(meta, silent);
+		return (PA);
 	else if (op == SA)
-		sa(meta, silent);
+		return (SA);
 	else if (op == SB)
-		sb(meta, silent);
+		return (SB);
 	else if (op == SS)
-		ss(meta, silent);
+		return (SS);
 	else if (op == RA)
-		ra(meta, silent);
+		return (RRA);
 	else if (op == RB)
-		rb(meta, silent);
+		return (RRB);
 	else if (op == RR)
-		rr(meta, silent);
+		return (RRR);
 	else if (op == RRA)
-		rra(meta, silent);
+		return (RA);
 	else if (op == RRB)
-		rrb(meta, silent);
+		return (RB);
 	else if (op == RRR)
-		rrr(meta, silent);
-}
-
-void	do_ops(t_push_swap *meta, t_list *ops, int silent)
-{
-	if (!meta || !ops)
-		return ;
-	while (ops)
-	{
-		_do_op(meta, (enum e_op)(unsigned long)ops->content, silent);
-		ops = ops->next;
-	}
-	return ;
+		return (RR);
+	return (OP_COUNT);
 }
