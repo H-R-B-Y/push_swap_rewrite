@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 12:41:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 16:10:37 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/17 12:49:35 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,13 @@ t_movedesc	*anon_optimal_push(t_push_swap *meta, t_cdll *stacks[2], size_t depth
 	return (current);
 }
 
+static inline size_t my_min(size_t a, size_t b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
 void	move_until_sorted(t_push_swap *meta)
 {
 	t_movedesc	*desc;
@@ -158,12 +165,12 @@ void	move_until_sorted(t_push_swap *meta)
 	while ((!a_chunk_is_sorted(meta->stack_a, meta->stack_a->count)) && meta->stack_a->count > meta->black_list_count)
 	{
 		desc = anon_optimal_push(meta, (t_cdll *[2]){meta->stack_a, meta->stack_b}, 
-		(meta->stack_a->count - meta->black_list_count) / 3, 0);
+		my_min((meta->stack_a->count - meta->black_list_count) / 3, 10), 0);
 		if (!desc)
 		{while (meta->stack_a->count > meta->black_list_count)
 			b_optimal_push(meta);
 		return;}
-		ft_printf("Optimal push found length: %d\n", desc->op_count);
+		// ft_printf("Optimal push found length: %d\n", desc->op_count);
 		do_ops(meta, desc->operations_list, 0);
 		destroy_move_descriptor(desc);
 	}

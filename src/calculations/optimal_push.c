@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 15:48:04 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/17 12:16:10 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	a_optimal_push(t_push_swap *meta)
 	p_count[0] = 0;
 	p_count[0] -= 1;
 	ft_bzero(p, sizeof(t_list *) * 2);
-	i = 0;print_stacks(meta);
+	i = 0;
+	// print_stacks(meta);
 	while (i < meta->stack_b->count)
 	{
 		p_count[1] = create_operations_list(meta, meta->stack_b, node, &p[1]);
