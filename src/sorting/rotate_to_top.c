@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:46:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 13:14:06 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/17 13:25:13 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	rotate_to_top(t_push_swap *meta, t_cdll_node *node, t_cdll *st, size_t coun
 			rot_anon(meta, st);
 		else
 			rrot_anon(meta, st);
-		print_stack(st);
+		// print_stack(st);
 		rots += -1 + (2 * (rots < 0));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/13 19:56:31 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/17 13:27:32 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	a_optimal_push(t_push_swap *meta)
 	p_count[0] = 0;
 	p_count[0] -= 1;
 	ft_bzero(p, sizeof(t_list *) * 2);
-	i = 0;print_stacks(meta);
+	i = 0;
+	// print_stacks(meta);
 	while (i < meta->stack_b->count)
 	{
 		p_count[1] = create_operations_list(meta, meta->stack_b, node, &p[1]);
@@ -100,7 +101,7 @@ int	a_optimal_push(t_push_swap *meta)
 	}
 	// and need to perform the actual operations
 	do_ops(meta, p[0]);
-	print_stacks(meta);
+	// print_stacks(meta);
 	ft_lstclear(&p[0], (void *)do_nothing);
 	return (1);
 }
@@ -144,7 +145,7 @@ int	b_optimal_push(t_push_swap *meta)
 	if (ft_lstsize(p[0]) > 0)
 	{
 		do_ops(meta, p[0]);
-		print_stacks(meta);
+		// print_stacks(meta);
 		ft_lstclear(&p[0], (void *)do_nothing);
 		return (1);
 	}
