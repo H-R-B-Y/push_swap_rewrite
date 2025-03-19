@@ -1,5 +1,5 @@
 NAME			:= push_swap
-CFLAGS			:= -o0 -g3
+CFLAGS			:= -Ofast -g3
 #CFLAGS			:= -Wextra -Wall -Werror
 
 MAKEFLAGS		+= --no-print-directory
