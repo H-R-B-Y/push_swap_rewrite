@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 12:41:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/19 12:49:35 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:33:33 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,26 +103,23 @@ t_movedesc	*anon_optimal_push(t_push_swap *meta, t_cdll *stacks[2], size_t depth
 	// loop through all nodes (except blacklisted)
 	while (i < stacks[0]->count)
 	{
-		if (!node_is_blacklist(node, meta->blacklist))
+		// create a move descriptor
+		current = create_move_descriptor(meta, stacks, node);
+		// if the move descriptor is shorter than the smallest
+		// 	delete all potentials
+		// 	add this move descriptor to the potentials
+		// if the move descriptor is longer than the smallest
+		// 	delete it
+		// if the move desciptor is the same length add it to the potentials
+		if (!potentials[0] || current->op_count < ((t_movedesc *)potentials[0]->content)->op_count)
 		{
-			// create a move descriptor
-			current = create_move_descriptor(meta, stacks, node);
-			// if the move descriptor is shorter than the smallest
-			// 	delete all potentials
-			// 	add this move descriptor to the potentials
-			// if the move descriptor is longer than the smallest
-			// 	delete it
-			// if the move desciptor is the same length add it to the potentials
-			if (!potentials[0] || current->op_count < ((t_movedesc *)potentials[0]->content)->op_count)
-			{
-				ft_lstclear(&(potentials[0]), (void *)&destroy_move_descriptor);
-				ft_lstadd_back(&(potentials[0]), ft_lstnew(current));
-			}
-			else if (potentials[0] && current->op_count == ((t_movedesc *)potentials[0]->content)->op_count)
-				ft_lstadd_back(&(potentials[0]), ft_lstnew(current));
-			else
-				destroy_move_descriptor(current);
+			ft_lstclear(&(potentials[0]), (void *)&destroy_move_descriptor);
+			ft_lstadd_back(&(potentials[0]), ft_lstnew(current));
 		}
+		else if (potentials[0] && current->op_count == ((t_movedesc *)potentials[0]->content)->op_count)
+			ft_lstadd_back(&(potentials[0]), ft_lstnew(current));
+		else
+			destroy_move_descriptor(current);
 		node = node->next;
 		i++;
 	}
@@ -162,15 +159,15 @@ void	move_until_sorted(t_push_swap *meta)
 {
 	t_movedesc	*desc;
 
-	while ((!a_chunk_is_sorted(meta->stack_a, meta->stack_a->count)) && meta->stack_a->count > meta->black_list_count)
+	while ((!a_chunk_is_sorted(meta->stack_a, meta->stack_a->count)) && meta->stack_a->count > 3)
 	{
 		desc = anon_optimal_push(meta, (t_cdll *[2]){meta->stack_a, meta->stack_b}, 
-		5, 0);
+		1, 0);
 		if (!desc)
-		{while (meta->stack_a->count > meta->black_list_count)
+		{while (meta->stack_a->count > 3)
 			b_optimal_push(meta);
 		return;}
-		ft_printf("Optimal push found length: %d\n", desc->op_count);
+		// ft_printf("Optimal push found length: %d\n", desc->op_count);
 		do_ops(meta, desc->operations_list, 0);
 		destroy_move_descriptor(desc);
 	}

@@ -83,6 +83,4 @@ post:
 	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
 	@echo 
 
-
-
 .PHONY: all clean fclean re test pre post rm

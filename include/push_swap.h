@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 15:08:06 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:17:12 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ struct s_push_swap
 	t_cdll		*stack_b;
 	t_list		*moves;
 	size_t		move_count;
-	size_t		black_list_count;
-	t_cdll_node	**blacklist;
 };
 
 enum e_op
