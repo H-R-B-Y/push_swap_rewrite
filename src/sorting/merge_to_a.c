@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:31:14 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 15:48:37 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:39:12 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	do_a_merge(t_push_swap *meta, size_t count_a, size_t count_b)
 	
 	if (!meta)
 		return ;
-	print_stacks(meta);
+	// print_stacks(meta);
 	rots = 0;
 	i = 0;
 	node = meta->stack_a->head;

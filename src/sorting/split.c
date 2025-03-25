@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:26:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 15:30:56 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:38:28 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t	do_median_split(t_push_swap *meta, t_cdll *st[2], size_t count, int rotat
 	long int	rots;
 
 	median = find_median_quickselect(st[0], count);
-	print_stacks(meta);
+	// print_stacks(meta);
 	ft_bzero(&i, sizeof(size_t) * 2);
 	rots = 0;
 	while (i[0] < count && i[1] < (count / 2) && ++i[0])
@@ -40,7 +40,7 @@ size_t	do_median_split(t_push_swap *meta, t_cdll *st[2], size_t count, int rotat
 		}
 		else if (++rots)
 			rot_anon(meta, st[0]);
-		print_stacks(meta);
+		// print_stacks(meta);
 	}
 	while (rotate && rots > 0 && rots != st[0]->count && rots-- )
 		{rrot_anon(meta, st[0]);}
@@ -57,7 +57,7 @@ size_t	do_split(t_push_swap *meta, t_cdll *st[2],	size_t count)
 	while (i < max)
 	{
 		
-		print_stacks(meta);
+		// print_stacks(meta);
 		push_anon(meta, st[0], st[1]);
 		i++;
 	}

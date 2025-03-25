@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:26:17 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 13:14:09 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:40:36 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	print_stack(t_cdll *st)
 
 void	print_stacks(t_push_swap *meta)
 {
-	ft_putstr_fd("A: ", 1);
-	print_stack(meta->stack_a);
-	ft_putstr_fd("B: ", 1);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
+	// ft_putstr_fd("A: ", 1);
+	// print_stack(meta->stack_a);
+	// ft_putstr_fd("B: ", 1);
+	// print_stack(meta->stack_b);
+	// ft_putendl_fd("", 1);
 }
