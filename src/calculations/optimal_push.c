@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/26 18:15:50 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/26 19:02:17 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	create_operations_list(t_push_swap *meta, t_cdll *st, t_cdll_node *node, 
 
 // Push from b to a
 // so find best value in b to push to a
-int	a_optimal_push(t_push_swap *meta)
+void	a_optimal_push(t_push_swap *meta)
 {
 	t_list	*p[2];
 	size_t	p_count[2];
@@ -67,11 +67,10 @@ int	a_optimal_push(t_push_swap *meta)
 	}
 	do_ops(meta, p[0], 0);
 	ft_lstclear(&p[0], (void *)do_nothing);
-	return (1);
 }
 
 // Push from a to b
-int	b_optimal_push(t_push_swap *meta)
+void	b_optimal_push(t_push_swap *meta)
 {
 	t_list	*p[2];
 	size_t	p_count[2];
@@ -100,5 +99,4 @@ int	b_optimal_push(t_push_swap *meta)
 	}
 	do_ops(meta, p[0], 0);
 	ft_lstclear(&p[0], (void *)do_nothing);
-	return (1);
 }
