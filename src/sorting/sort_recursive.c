@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 18:44:53 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:17:06 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,22 @@
 // merge splits
 // return
 
-/**
- * @brief recursive sort function
- * @param meta meta contianer for move counts
- * @param st is stack[2] where [0] is a initially and [1] is b (swapped when focusing on b)
- * @param count count of items in current chunk
- */
-void	do_sort(t_push_swap *meta, t_cdll *st[2], size_t count)
-{
-	size_t	split;
-
-	if (!meta || !st)
-		return ;
-
-	if (!chunk_is_sorted(st[0], count))
-	{
-		if (count <= 3)
-		{
-			mini_sort(meta, st[0], count);
-			return ;
-		}
-		if (count == st[0]->count)
-			split = do_median_split(meta, st, count);
-		else
-			split = do_split(meta, st, count);
-		do_sort(meta, (t_cdll *[2]){st[1], st[0]}, split);
-		do_sort(meta, st, count - split);
-		do_merge(meta, st, (size_t [2]){count - split, split});
-	}
-	return ;
-}
-
 void	sort(t_push_swap *meta)
 {
-	do_sort(meta,
-		(t_cdll *[2]){meta->stack_a, meta->stack_b},
-		meta->stack_a->count
-	);
+	push_anon(meta, meta->stack_a, meta->stack_b, 0);
+	push_anon(meta, meta->stack_a, meta->stack_b, 0);
+	push_anon(meta, meta->stack_a, meta->stack_b, 0);
+	b_mini_sort(meta, 3);
+	// while (!(meta->stack_a->count < 3) && !(a_chunk_is_sorted(meta->stack_a, meta->stack_a->count)))
+	// {
+	// 	if (!b_optimal_push(meta));
+	// 		break ;
+	// }
+	move_until_sorted(meta);
+	rotate_to_top(meta, meta->stack_a->min_node, meta->stack_a, meta->stack_a->count);
+	a_mini_sort(meta, 3);
+	while (meta->stack_b->count > 0)
+		a_optimal_push(meta);
+	rotate_to_top(meta, meta->stack_a->min_node, meta->stack_a, meta->stack_a->count);
+	return ;
 }

@@ -6,35 +6,64 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:26:13 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 14:47:14 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 15:09:42 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	micro_sort(t_push_swap *meta, t_cdll *st)
+void	a_micro_sort(t_push_swap *meta)
 {
-	if (!meta || !st)
+	if (!meta)
 		return ;
-	if (st->head->data > st->head->next->data)
-		swap_anon(meta, st);
+	if (meta->stack_a->head->data > meta->stack_a->head->next->data)
+		sa(meta, 0);
 }
 
-void	mini_sort(t_push_swap *meta, t_cdll *st, size_t count)
+void	a_mini_sort(t_push_swap *meta, size_t count)
 {
-	if (!meta || !st || count < 2 || st->count < 2)
+	if (!meta || count < 2 || meta->stack_a->count < 2)
 		return ;
 	if (count == 2)
 	{
-		micro_sort(meta, st);
+		a_micro_sort(meta);
 		return ;
 	}
-	micro_sort(meta, st);
-	if (st->head->next->data > st->head->next->next->data)
+	a_micro_sort(meta);
+	if (meta->stack_a->head->next->data
+		> meta->stack_a->head->next->next->data)
 	{
-		rot_anon(meta, st);
-		micro_sort(meta, st);
-		rrot_anon(meta, st);
+		ra(meta, 0);
+		a_micro_sort(meta);
+		rra(meta, 0);
 	}
-	micro_sort(meta, st);
+	a_micro_sort(meta);
+}
+
+void	b_micro_sort(t_push_swap *meta)
+{
+	if (!meta)
+		return ;
+	if (meta->stack_b->head->data < meta->stack_b->head->next->data)
+		sb(meta, 0);
+}
+
+void	b_mini_sort(t_push_swap *meta, size_t count)
+{
+	if (!meta || count < 2 || meta->stack_b->count < 2)
+		return ;
+	if (count == 2)
+	{
+		b_micro_sort(meta);
+		return ;
+	}
+	b_micro_sort(meta);
+	if (meta->stack_b->head->next->data
+		< meta->stack_b->head->next->next->data)
+	{
+		rb(meta, 0);
+		b_micro_sort(meta);
+		rrb(meta, 0);
+	}
+	b_micro_sort(meta);
 }

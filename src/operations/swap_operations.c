@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 14:33:12 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 13:33:36 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,37 @@
 
 int	_swap(t_cdll *st)
 {
-	t_cdll_node temp;
+	t_cdll_node *temp;
+	t_cdll_node *temp2;
 
 	if (!st || st->count < 2)
 		return (0);
-	temp.data = st->head->data;
-	st->head->data = st->head->next->data;
-	st->head->next->data = temp.data;
+	temp = cdll_pop_front(st);
+	temp2 = cdll_pop_front(st);
+	cdll_push_front(st, temp);
+	cdll_push_front(st, temp2);
 	return (1);
 }
 
-void	sa(t_push_swap *meta)
+void	sa(t_push_swap *meta, int silent)
 {
 	if (!meta)
 		return ;
-	if (_swap(meta->stack_a))
+	if (_swap(meta->stack_a) && !silent)
 		append_operation(meta, SA);
 }
 
-void	sb(t_push_swap *meta)
+void	sb(t_push_swap *meta, int silent)
 {
 	if (!meta)
 		return ;
-	if (_swap(meta->stack_b))
+	if (_swap(meta->stack_b) && !silent)
 		append_operation(meta, SB);
 }
 
 // this isnt great if one of the swap statement fails for some reason
 // it could potentially perform multiple swaps
-void	ss(t_push_swap *meta)
+void	ss(t_push_swap *meta, int silent)
 {
 	int	operation;
 
@@ -53,20 +55,23 @@ void	ss(t_push_swap *meta)
 		operation |= SA;
 	if (meta->stack_b->count > 1 && _swap(meta->stack_b))
 		operation |= SB;
-	if (operation == (SA | SB))
-		append_operation(meta, SS);
-	else if (operation == 0)
-		return;
-	else
-		append_operation(meta, operation);
+	if (!silent)
+	{
+		if (operation == (SA | SB))
+			append_operation(meta, SS);
+		else if (operation == 0)
+			return;
+		else 
+			append_operation(meta, operation);
+	}
 }
 
-void	swap_anon(t_push_swap *meta, t_cdll *stack)
+void	swap_anon(t_push_swap *meta, t_cdll *stack, int silent)
 {
 	if (!meta || !stack)
 		return ;
 	if (stack == meta->stack_a)
-		sa(meta);
+		sa(meta, silent);
 	else if (stack == meta->stack_b)
-		sb(meta);
+		sb(meta, silent);
 }

@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   node_is_blacklist.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 15:26:17 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/10 13:14:09 by hbreeze          ###   ########.fr       */
+/*   Created: 2025/03/12 17:00:55 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/03/12 17:11:42 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	print_stack(t_cdll *st)
+int	node_is_blacklist(t_cdll_node *node, t_cdll_node **blacklist)
 {
-	t_cdll_node	*node;
+	t_cdll_node	*idx;
+	size_t		i;
 
-	if (!st || st->count == 0)
-		return ;
-	node = st->head;
-	ft_printf("HEAD-> ");
-	while (node != st->tail)
+	if (!node || !blacklist || !*blacklist)
+		return (0);
+	i = 0;
+	while (i == 0 || idx)
 	{
-		ft_printf("%d, ", node->data);
-		node = node->next;
+		idx = blacklist[i++];
+		if (node == idx)
+			return (1);
 	}
-	ft_printf("%d <-TAIL \n", node->data);
-	return ;
-}
-
-void	print_stacks(t_push_swap *meta)
-{
-	ft_putstr_fd("A: ", 1);
-	print_stack(meta->stack_a);
-	ft_putstr_fd("B: ", 1);
-	print_stack(meta->stack_b);
-	ft_putendl_fd("", 1);
+	return (0);
 }

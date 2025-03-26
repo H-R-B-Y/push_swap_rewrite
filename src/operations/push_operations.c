@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/04 16:46:44 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/16 13:36:09 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,28 @@ int	_push(t_cdll *from, t_cdll *too)
 From B to A
 */
 
-void	pa(t_push_swap *meta)
+void	pa(t_push_swap *meta, int silent)
 {
 	if (!meta)
 		return ;
-	if (_push(meta->stack_b, meta->stack_a))
+	if (_push(meta->stack_b, meta->stack_a) && !silent)
 		append_operation(meta, PA);
 }
 
-void	pb(t_push_swap *meta)
+void	pb(t_push_swap *meta, int silent)
 {
 	if (!meta)
 		return ;
-	if (_push(meta->stack_a, meta->stack_b))
+	if (_push(meta->stack_a, meta->stack_b) && !silent)
 		append_operation(meta, PB);
 }
 
-void	push_anon(t_push_swap *meta, t_cdll *from, t_cdll *too)
+void	push_anon(t_push_swap *meta, t_cdll *from, t_cdll *too, int silent)
 {
 	if (!meta || !from || !too)
 		return ;
 	if (from == meta->stack_a)
-		pb(meta);
+		pb(meta, silent);
 	else if (from == meta->stack_b)
-		pa(meta);
+		pa(meta, silent);
 }
