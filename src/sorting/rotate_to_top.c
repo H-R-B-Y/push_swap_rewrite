@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:46:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/17 12:15:54 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/26 18:03:57 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline long int m_abs(long int x)
 	return (x);
 }
 
-long int	distance_from_head(t_cdll *st, t_cdll_node *node, size_t sz)
+long int	distance_from_head(t_cdll *st, t_cdll_node *node)
 {
 	t_cdll_node	*i;
 	long int	back;
@@ -48,7 +48,7 @@ size_t	ops_to_top(t_push_swap *meta, t_cdll *st, t_cdll_node *node, t_list **lis
 	int			offset;
 	
 
-	rots = distance_from_head(st, node, 0);
+	rots = distance_from_head(st, node);
 	output = rots;
 	offset = 1 * (st == meta->stack_b);
 	while (rots != 0)
@@ -62,18 +62,17 @@ size_t	ops_to_top(t_push_swap *meta, t_cdll *st, t_cdll_node *node, t_list **lis
 	return	(m_abs(output));
 }
 
-void	rotate_to_top(t_push_swap *meta, t_cdll_node *node, t_cdll *st, size_t count)
+void	rotate_to_top(t_push_swap *meta, t_cdll_node *node, t_cdll *st)
 {
 	long int	rots;
 	
-	rots = distance_from_head(st, node, count);
+	rots = distance_from_head(st, node);
 	while (rots != 0)
 	{
 		if (rots < 0)
 			rot_anon(meta, st, 0);
 		else
 			rrot_anon(meta, st, 0);
-		// print_stack(st);
 		rots += -1 + (2 * (rots < 0));
 	}
 }

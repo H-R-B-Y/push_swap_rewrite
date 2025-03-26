@@ -1,6 +1,6 @@
 NAME			:= push_swap
-CFLAGS			:= -Ofast -g3
-#CFLAGS			:= -Wextra -Wall -Werror
+CFLAGS			:= -Wextra -Wall -Werror -Ofast -g3
+#CFLAGS			:= 
 
 MAKEFLAGS		+= --no-print-directory
 
@@ -14,7 +14,7 @@ LIBFT_DIR		:= $(abspath $(LIB_DIR)/libft)
 LIBFT			:= $(LIBFT_DIR)/libft.a
 
 SRC_DIR			:= ./src
-SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
+SRCS			:= \
 				$(SRC_DIR)/operations/append_operation.c \
 				$(SRC_DIR)/operations/rrot_operations.c \
 				$(SRC_DIR)/operations/swap_operations.c \
@@ -23,6 +23,7 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/operations/get_opposite.c \
 				$(SRC_DIR)/operations/do_ops.c \
 				$(SRC_DIR)/parsing/parse_args.c \
+				$(SRC_DIR)/parsing/duplicate_check.c \
 				$(SRC_DIR)/cdll/pop_cdll.c \
 				$(SRC_DIR)/cdll/push_cdll.c \
 				$(SRC_DIR)/cdll/cdll_get.c \
@@ -30,19 +31,14 @@ SRCS			:= $(SRC_DIR)/quick_select/quick_select.c \
 				$(SRC_DIR)/cdll/cdll_get_minmax.c \
 				$(SRC_DIR)/debug/print_stack.c \
 				$(SRC_DIR)/debug/print_opperations.c \
-				$(SRC_DIR)/parsing/duplicate_check.c \
 				$(SRC_DIR)/sorting/check_sorted.c \
 				$(SRC_DIR)/sorting/mini_sort.c \
 				$(SRC_DIR)/sorting/rotate_to_top.c \
 				$(SRC_DIR)/sorting/sort_recursive.c \
-				$(SRC_DIR)/sorting/split.c \
 				$(SRC_DIR)/calculations/find_correct_place.c \
 				$(SRC_DIR)/calculations/optimal_push.c \
-				$(SRC_DIR)/calculations/longest_cont.c \
-				$(SRC_DIR)/calculations/node_is_blacklist.c \
 				$(SRC_DIR)/calculations/cost_reduction.c \
-				$(SRC_DIR)/calculations/optimal_push_new.c \
-				$(SRC_DIR)/calculations/calculate_next_best.c \
+				$(SRC_DIR)/calculations/util.c \
 				\
 
 
