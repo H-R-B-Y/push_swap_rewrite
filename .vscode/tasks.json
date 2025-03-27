@@ -34,7 +34,7 @@
 			],
 			"problemMatcher": [],
 			"options": {
-				"cwd": "${workspaceRoot}"
+				"cwd": "${fileDirname}"
 			}
 		}
 	],
