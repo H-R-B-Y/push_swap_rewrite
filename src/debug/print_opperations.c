@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:26:17 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 16:06:46 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:06:26 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	print_operation(void *ptr)
 
 	op = (int)(unsigned long)ptr;
 	ft_printf("%s\n", ((char *[OP_COUNT]){
-		"pa", "pb", "sa", "sb", "ss", "ra",
-		"rb", "rr", "rra", "rrb", "rrr"
-	})[op]);
+			"pa", "pb", "sa", "sb", "ss", "ra",
+			"rb", "rr", "rra", "rrb", "rrr"
+		})[op]);
 }
 
 void	print_operations(t_push_swap *meta)

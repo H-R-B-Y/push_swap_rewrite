@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 13:33:36 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:07:13 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	_swap(t_cdll *st)
 {
-	t_cdll_node *temp;
-	t_cdll_node *temp2;
+	t_cdll_node	*temp;
+	t_cdll_node	*temp2;
 
 	if (!st || st->count < 2)
 		return (0);
@@ -60,8 +60,8 @@ void	ss(t_push_swap *meta, int silent)
 		if (operation == (SA | SB))
 			append_operation(meta, SS);
 		else if (operation == 0)
-			return;
-		else 
+			return ;
+		else
 			append_operation(meta, operation);
 	}
 }

@@ -6,19 +6,22 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:48:57 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 13:47:14 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:22:33 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-t_op_map	*get_op_map()
+t_op_map	*get_op_map(void)
 {
-	static t_op_map op_map[12] = {
-		{"ra", RA}, {"rra", RRA}, {"rb", RB}, {"rrb", RRB}, {"rr", RR}, {"rrr", RRR},
-		{"sa", SA}, {"sb", SB}, {"ss", SS}, {"pa", PA}, {"pb", PB},
-		{0, OP_COUNT}
-	};
+	static t_op_map	op_map[12] = {
+	{"ra", RA}, {"rra", RRA},
+	{"rb", RB}, {"rrb", RRB},
+	{"rr", RR}, {"rrr", RRR},
+	{"sa", SA}, {"sb", SB},
+	{"ss", SS}, {"pa", PA},
+	{"pb", PB}, {0, OP_COUNT}};
+
 	return (op_map);
 }
 

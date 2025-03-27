@@ -6,15 +6,16 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 12:18:49 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:59:21 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-size_t	create_operations_list(t_push_swap *meta, t_cdll *st, t_cdll_node *node, t_list	**ops)
+size_t	create_operations_list(t_push_swap *meta, t_cdll *st,
+		t_cdll_node *node, t_list	**ops)
 {
-	size_t	count;
+	size_t		count;
 	t_cdll_node	*under;
 
 	count = ops_to_top(meta, st, node, ops);
@@ -37,7 +38,8 @@ size_t	create_operations_list(t_push_swap *meta, t_cdll *st, t_cdll_node *node, 
 	return (count);
 }
 
-static inline void swap_on_count(t_list **p0, size_t *p0_sz, t_list **p1, size_t *p1_sz)
+static inline void	swap_on_count(t_list **p0, size_t *p0_sz,
+		t_list **p1, size_t *p1_sz)
 {
 	if (*p1_sz < *p0_sz)
 	{
@@ -54,10 +56,10 @@ static inline void swap_on_count(t_list **p0, size_t *p0_sz, t_list **p1, size_t
 // so find best value in b to push to a
 void	a_optimal_push(t_push_swap *meta)
 {
-	t_list	*p[2];
-	size_t	p_count[2];
+	t_list		*p[2];
+	size_t		p_count[2];
 	t_cdll_node	*node;
-	size_t	i;
+	size_t		i;
 
 	node = meta->stack_b->head;
 	p_count[0] = -1;
@@ -77,10 +79,10 @@ void	a_optimal_push(t_push_swap *meta)
 // Push from a to b
 void	b_optimal_push(t_push_swap *meta)
 {
-	t_list	*p[2];
-	size_t	p_count[2];
+	t_list		*p[2];
+	size_t		p_count[2];
 	t_cdll_node	*node;
-	size_t	i;
+	size_t		i;
 
 	node = meta->stack_a->head;
 	p_count[0] = -1;

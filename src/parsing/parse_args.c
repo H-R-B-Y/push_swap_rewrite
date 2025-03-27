@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:59:44 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 13:23:21 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:07:46 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	parse_args(int argc, char **argv, t_cdll **stack_a)
 
 	if (!(*stack_a))
 		return (1);
-	while(argc)
+	while (argc)
 	{
 		if (!is_valid_int(argv[argc - 1], &data))
 			return (2);

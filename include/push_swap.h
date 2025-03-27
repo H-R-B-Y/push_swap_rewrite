@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/26 19:05:59 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:12:04 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,17 @@ struct s_push_swap
  */
 enum e_op
 {
-	PA, PB, SA, SB, SS, RA,
-	RB, RR, RRA, RRB, RRR,
+	PA,
+	PB,
+	SA,
+	SB,
+	SS,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
 	OP_COUNT,
 };
 
@@ -86,7 +95,8 @@ void		rotate_to_top(t_push_swap *meta, t_cdll_node *node, t_cdll *st);
  * @param list - pointer to the list of operations
  * @return size_t - count of operations
  */
-size_t		ops_to_top(t_push_swap *meta, t_cdll *st, t_cdll_node *node, t_list **list);
+size_t		ops_to_top(t_push_swap *meta, t_cdll *st,
+				t_cdll_node *node, t_list **list);
 
 /**
  * @brief Gets the shortest distance to the top of the stack
@@ -202,7 +212,7 @@ void		sa(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rrot_anon(t_push_swap *meta, t_cdll *stack, int silent);
+void		rrot_anon(t_push_swap *meta, t_cdll *stack, int silent);
 
 /**
  * @brief Reverse rotate stack a
@@ -210,7 +220,7 @@ void	rrot_anon(t_push_swap *meta, t_cdll *stack, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rra(t_push_swap *meta, int silent);
+void		rra(t_push_swap *meta, int silent);
 
 /**
  * @brief Reverse rotate stack b
@@ -218,7 +228,7 @@ void	rra(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rrb(t_push_swap *meta, int silent);
+void		rrb(t_push_swap *meta, int silent);
 
 /**
  * @brief Reverse rotate both stacks
@@ -226,7 +236,7 @@ void	rrb(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rrr(t_push_swap *meta, int silent);
+void		rrr(t_push_swap *meta, int silent);
 
 /**
  * @brief Rotate the stack
@@ -235,7 +245,7 @@ void	rrr(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rot_anon(t_push_swap *meta, t_cdll *stack, int silent);
+void		rot_anon(t_push_swap *meta, t_cdll *stack, int silent);
 
 /**
  * @brief Rotate stack a
@@ -243,7 +253,7 @@ void	rot_anon(t_push_swap *meta, t_cdll *stack, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	ra(t_push_swap *meta, int silent);
+void		ra(t_push_swap *meta, int silent);
 
 /**
  * @brief Rotate stack b
@@ -251,7 +261,7 @@ void	ra(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rb(t_push_swap *meta, int silent);
+void		rb(t_push_swap *meta, int silent);
 
 /**
  * @brief Rotate both stacks
@@ -259,7 +269,7 @@ void	rb(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	rr(t_push_swap *meta, int silent);
+void		rr(t_push_swap *meta, int silent);
 
 /**
  * @brief Push an element from one stack to another
@@ -269,7 +279,7 @@ void	rr(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	push_anon(t_push_swap *meta, t_cdll *from, t_cdll *too, int silent);
+void		push_anon(t_push_swap *meta, t_cdll *from, t_cdll *too, int silent);
 
 /**
  * @brief Push an element from stack b to stack a
@@ -277,7 +287,7 @@ void	push_anon(t_push_swap *meta, t_cdll *from, t_cdll *too, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	pa(t_push_swap *meta, int silent);
+void		pa(t_push_swap *meta, int silent);
 
 /**
  * @brief Push an element from stack a to stack b
@@ -285,7 +295,7 @@ void	pa(t_push_swap *meta, int silent);
  * @param silent - 1 if silent, 0 if not
  * @return void
  */
-void	pb(t_push_swap *meta, int silent);
+void		pb(t_push_swap *meta, int silent);
 
 /**
  * @brief Get the opposite operation
@@ -293,7 +303,7 @@ void	pb(t_push_swap *meta, int silent);
  * @return int - opposite operation
  * @note if op is not a valid operation, returns OP_COUNT
  */
-int		get_opposite_operations(enum e_op op);
+int			get_opposite_operations(enum e_op op);
 
 /**
  * @brief Do operations from the list
@@ -301,7 +311,7 @@ int		get_opposite_operations(enum e_op op);
  * @param ops - pointer to the list of operations
  * @param silent - 1 if silent, 0 if not
  */
-void	do_ops(t_push_swap *meta, t_list *ops, int silent);
+void		do_ops(t_push_swap *meta, t_list *ops, int silent);
 
 /**
  * @brief Append an operation to the list
@@ -309,7 +319,7 @@ void	do_ops(t_push_swap *meta, t_list *ops, int silent);
  * @param op - operation
  * @return int - 0 if success, 1 if error
  */
-int	append_operation_to_list(t_list **p, enum e_op op);
+int			append_operation_to_list(t_list **p, enum e_op op);
 
 /**
  * @brief Append an operation to the list
@@ -317,7 +327,7 @@ int	append_operation_to_list(t_list **p, enum e_op op);
  * @param op - operation
  * @return int - 0 if success, 1 if error
  */
-int	append_operation(t_push_swap *meta, enum e_op op);
+int			append_operation(t_push_swap *meta, enum e_op op);
 
 /**
  * @brief Print an operation
@@ -325,14 +335,14 @@ int	append_operation(t_push_swap *meta, enum e_op op);
  * @return void
  * @note pointer will be cast to enum e_op
  */
-void	print_operation(void *ptr);
+void		print_operation(void *ptr);
 
 /**
  * @brief Print all the operations
  * @param meta - pointer to the structure with all the data
  * @return void
  */
-void	print_operations(t_push_swap *meta);
+void		print_operations(t_push_swap *meta);
 
 /**
  * @brief Min of two numbers
@@ -340,21 +350,21 @@ void	print_operations(t_push_swap *meta);
  * @param b - second number
  * @return size_t - min of two numbers
  */
-size_t	my_min(size_t a, size_t b);
+size_t		my_min(size_t a, size_t b);
 
 /**
  * @brief Greedy push from a to b
  * @param meta - pointer to the structure with all the data
  * @return void
  */
-void	b_optimal_push(t_push_swap *meta);
+void		b_optimal_push(t_push_swap *meta);
 
 /**
  * @brief Greedy push from b to a
  * @param meta - pointer to the structure with all the data
  * @return void
  */
-void	a_optimal_push(t_push_swap *meta);
+void		a_optimal_push(t_push_swap *meta);
 
 /**
  * @brief Create a list of operations to push an element to the sorted position
@@ -364,7 +374,8 @@ void	a_optimal_push(t_push_swap *meta);
  * @param ops - pointer to the list of operations
  * @return size_t - count of operations
  */
-size_t	create_operations_list(t_push_swap *meta, t_cdll *st, t_cdll_node *node, t_list	**ops);
+size_t		create_operations_list(t_push_swap *meta, t_cdll *st,
+				t_cdll_node *node, t_list	**ops);
 
 /**
  * @brief Find the node containing number in stack a
@@ -393,7 +404,7 @@ t_cdll_node	*b_find_position(t_cdll *stack, int number);
  * so they cannot be reduced
  * 
  */
-int		ops_are_opposing(enum e_op a, enum e_op b);
+int			ops_are_opposing(enum e_op a, enum e_op b);
 
 /**
  * @brief Reduce the cost of the operations
@@ -407,7 +418,7 @@ int		ops_are_opposing(enum e_op a, enum e_op b);
  * 
  * For example, if there are RA and RB, they will be replaced with RR.
  */
-size_t	cost_reduce(t_push_swap *meta, t_list **ops);
+size_t		cost_reduce(t_push_swap *meta, t_list **ops);
 
 // DEBUG
 /**
@@ -415,13 +426,13 @@ size_t	cost_reduce(t_push_swap *meta, t_list **ops);
  * @param meta - pointer to the structure with all the data
  * @return void
  */
-void	print_stacks(t_push_swap *meta);
+void		print_stacks(t_push_swap *meta);
 
 /**
  * @brief Print the stack
  * @param st - pointer to the stack
  * @return void
  */
-void	print_stack(t_cdll *st);
+void		print_stack(t_cdll *st);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:20:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/26 18:05:14 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:03:12 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int		ops_are_opposing(enum e_op a, enum e_op b)
+int	ops_are_opposing(enum e_op a, enum e_op b)
 {
 	if (a == RA && b == RRB)
 		return (1);
@@ -40,11 +40,12 @@ size_t	count_similar(t_list *p, enum e_op a)
 
 size_t	remove_similar(t_list **ops, enum e_op op, size_t count)
 {
-	t_list *idx[2];
+	t_list	*idx[2];
 
 	idx[0] = (*ops);
 	if ((enum e_op)(unsigned long)idx[0]->content != op)
-		while (idx[0] && idx[0]->next && (enum e_op)(unsigned long)idx[0]->next->content != op)
+		while (idx[0] && idx[0]->next
+			&& (enum e_op)(unsigned long)idx[0]->next->content != op)
 			idx[0] = idx[0]->next;
 	idx[1] = idx[0]->next;
 	while (idx[1] && (enum e_op)(unsigned long)idx[1]->content == op && count)
@@ -54,7 +55,8 @@ size_t	remove_similar(t_list **ops, enum e_op op, size_t count)
 		idx[1] = idx[0]->next;
 		count--;
 	}
-	while (count && idx[0] == (*ops) && (enum e_op)(unsigned long)idx[0]->content == op)
+	while (count && idx[0] == (*ops)
+		&& (enum e_op)(unsigned long)idx[0]->content == op)
 	{
 		count--;
 		(*ops) = idx[0]->next;
@@ -73,7 +75,7 @@ void	append_similar(t_list **ops, enum e_op op, size_t count)
 	else if (op == RRB || op == RRA)
 		add = RRR;
 	else
-		return;
+		return ;
 	while (count)
 	{
 		ft_lstadd_front(ops, ft_lstnew((void *)(unsigned long)add));
@@ -93,7 +95,7 @@ size_t	cost_reduce(t_push_swap *meta, t_list **ops)
 		return (0);
 	idx = (*ops);
 	while (idx && (enum e_op)(unsigned long)idx->content == op[0])
-			idx = idx->next;
+		idx = idx->next;
 	op[1] = (enum e_op)(unsigned long)idx->content;
 	if (op[1] == PA || op[1] == PB || ops_are_opposing(op[0], op[1]))
 		return (ft_lstsize(*ops));

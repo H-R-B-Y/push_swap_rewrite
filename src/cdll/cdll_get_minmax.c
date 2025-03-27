@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 16:48:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 14:18:33 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:06:00 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_cdll_node	*cdll_get_max(t_cdll *stack)
 	stack->max_node = max_node;
 	return (max_node);
 }
+
 t_cdll_node	*cdll_get_min(t_cdll *stack)
 {
 	t_cdll_node	*tmp;

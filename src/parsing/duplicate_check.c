@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:22:16 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 14:09:53 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:07:39 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // returns true IF ANY DUPLICATES EXIST
 int	contains_duplicate(t_cdll *stack)
 {
-	t_cdll_node *idx[2];
+	t_cdll_node	*idx[2];
 
 	if (!stack)
 		return (0);

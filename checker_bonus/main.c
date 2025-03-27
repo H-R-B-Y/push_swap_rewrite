@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:38:25 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 13:52:56 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:20:01 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	append_all_ops(t_push_swap *meta)
 {
-	char	*str;
+	char		*str;
 	enum e_op	op;
 
 	str = get_next_line(STDIN_FILENO);
@@ -36,7 +36,8 @@ int	append_all_ops(t_push_swap *meta)
 	free(str);
 	return (1);
 }
-static int cleanup(t_push_swap *meta, int code, char *str)
+
+static int	cleanup(t_push_swap *meta, int code, char *str)
 {
 	delete_cdll(&meta->stack_a);
 	delete_cdll(&meta->stack_b);
@@ -45,12 +46,11 @@ static int cleanup(t_push_swap *meta, int code, char *str)
 	return (code);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_push_swap	meta;
 	size_t		sz;
 
-	
 	if (argc < 2)
 		return (1);
 	ft_bzero(&meta, sizeof(t_push_swap));
@@ -63,7 +63,8 @@ int main(int argc, char **argv)
 	if (!append_all_ops(&meta))
 		return (cleanup(&meta, 1, "ERROR"));
 	do_ops(&meta, meta.moves, 1);
-	if (meta.stack_a->count != sz || !a_chunk_is_sorted(meta.stack_a, meta.stack_a->count))
+	if (meta.stack_a->count != sz
+		|| !a_chunk_is_sorted(meta.stack_a, meta.stack_a->count))
 		return (cleanup(&meta, 0, "KO"));
 	return (cleanup(&meta, 0, "OK"));
 }

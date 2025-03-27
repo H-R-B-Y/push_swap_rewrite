@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:36:10 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 14:04:19 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:04:23 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_cdll_node	*cdll_pop_front(t_cdll *list)
 		list->head->prev = list->tail;
 		list->tail->next = list->head;
 	}
-	else 
+	else
 	{
 		list->head = 0;
 		list->tail = 0;

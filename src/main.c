@@ -6,13 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 13:23:12 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 15:57:30 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_push_swap	meta;
 

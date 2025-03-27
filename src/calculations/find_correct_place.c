@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:20:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 14:28:26 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:02:14 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ t_cdll_node	*a_find_position(t_cdll *stack, int number)
 
 	if (!stack || stack->count == 0)
 		return ((void *)0);
-	if ((stack->max_node && number > stack->max) || (stack->min_node && number < stack->min) || stack->count == 1)
+	if ((stack->max_node && number > stack->max)
+		|| (stack->min_node && number < stack->min)
+		|| stack->count == 1)
 		return (stack->min_node);
 	node = stack->head;
 	i = 0;
@@ -40,7 +42,9 @@ t_cdll_node	*b_find_position(t_cdll *stack, int number)
 
 	if (!stack || stack->count == 0)
 		return ((void *)0);
-	if ((stack->max_node && number > stack->max) || (stack->min_node && number < stack->min) || stack->count == 1)
+	if ((stack->max_node && number > stack->max)
+		|| (stack->min_node && number < stack->min)
+		|| stack->count == 1)
 		return (stack->max_node);
 	node = stack->head;
 	i = 0;

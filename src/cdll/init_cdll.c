@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:02:16 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 00:04:28 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:06:07 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	delete_node(t_cdll_node **node)
 	*node = 0;
 }
 
-t_cdll	*init_cdll()
+t_cdll	*init_cdll(void)
 {
 	t_cdll	*list;
 

@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:09:34 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 13:45:46 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:08:12 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	a_chunk_is_sorted(t_cdll *stack, size_t sz)
 
 int	b_chunk_is_sorted(t_cdll *stack, size_t sz)
 {
-		size_t		i;
+	size_t		i;
 	t_cdll_node	*node;
 
 	if (!stack || sz == 0)

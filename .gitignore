@@ -5,11 +5,10 @@
 *.pyc
 *.out
 *.sh
-*.png
 *.txt
 pycache
 __pycache__
 push_swap
 checker
 checker_linux
-
+test

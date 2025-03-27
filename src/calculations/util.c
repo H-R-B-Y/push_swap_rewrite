@@ -6,13 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:42:20 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/26 17:42:31 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:03:22 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-size_t my_min(size_t a, size_t b)
+size_t	my_min(size_t a, size_t b)
 {
 	if (a < b)
 		return (a);

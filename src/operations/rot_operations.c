@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 13:35:43 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:07:19 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	rr(t_push_swap *meta, int silent)
 		if (operation == (RA | RB))
 			append_operation(meta, RR);
 		else if (operation == 0)
-			return;
+			return ;
 		else
 			append_operation(meta, operation);
 	}
