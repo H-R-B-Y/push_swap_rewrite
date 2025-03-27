@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/26 18:13:40 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 12:24:48 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	sort(t_push_swap *meta)
 {
 	if (anon_is_sorted(meta, meta->stack_a, meta->stack_a->count))
 		return ;
+	if (meta->stack_a->count <= 3)
+	{
+		a_mini_sort(meta, meta->stack_a->count);
+		return ;
+	}
 	push_anon(meta, meta->stack_a, meta->stack_b, 0);
 	push_anon(meta, meta->stack_a, meta->stack_b, 0);
 	push_anon(meta, meta->stack_a, meta->stack_b, 0);

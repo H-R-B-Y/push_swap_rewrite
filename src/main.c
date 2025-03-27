@@ -6,16 +6,11 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/26 18:21:40 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:23:12 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-void	do_nothing(void *ptr)
-{
-	(void)ptr;
-}
 
 int main(int argc, char **argv)
 {
@@ -28,7 +23,7 @@ int main(int argc, char **argv)
 	if (parse_args(argc - 1, argv + 1, &meta.stack_a)
 		|| contains_duplicate(meta.stack_a))
 	{
-		ft_printf("Error\n");
+		ft_putendl_fd("Error", 2);
 		delete_cdll(&(meta.stack_a));
 		return (1);
 	}

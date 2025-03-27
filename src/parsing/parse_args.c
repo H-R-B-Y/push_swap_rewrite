@@ -6,11 +6,16 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:59:44 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/06 14:09:06 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/27 13:23:21 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+void	do_nothing(void *ptr)
+{
+	(void)ptr;
+}
 
 int	is_valid_int(char *str, int *out)
 {
