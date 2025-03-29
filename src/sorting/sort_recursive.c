@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/12 17:07:31 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/29 15:29:50 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 // merge splits
 // return
 
+t_cdll_node	**find_lis(t_cdll *stack);
+
 void	sort(t_push_swap *meta)
 {
 	
 
-	meta->blacklist = find_cont(meta->stack_a);
+	// meta->blacklist = find_cont(meta->stack_a);
+	meta->blacklist = find_lis(meta->stack_a);
 	// size_t	split;
 
 	// if (meta->stack_a->count <= 3)
