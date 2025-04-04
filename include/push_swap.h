@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 16:12:04 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/29 17:29:18 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ struct s_push_swap
 	t_cdll		*stack_b;
 	t_list		*moves;
 	size_t		move_count;
+	t_cdll_node	**blacklist;
+	size_t		blacklist_size;
 };
 
 /**
@@ -419,6 +421,15 @@ int			ops_are_opposing(enum e_op a, enum e_op b);
  * For example, if there are RA and RB, they will be replaced with RR.
  */
 size_t		cost_reduce(t_push_swap *meta, t_list **ops);
+
+
+// LIS
+
+t_cdll_node	**cdll_arrayify(t_cdll *list, size_t *len);
+
+int			node_is_blacklist(t_push_swap *meta, t_cdll_node *node);
+
+t_cdll_node	**find_lis(t_push_swap *meta, t_cdll *stack);
 
 // DEBUG
 /**

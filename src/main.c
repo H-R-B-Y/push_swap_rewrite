@@ -6,11 +6,12 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 15:57:30 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/04 16:42:45 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
 
 int	main(int argc, char **argv)
 {
@@ -32,6 +33,7 @@ int	main(int argc, char **argv)
 	print_operations(&meta);
 	delete_cdll(&(meta.stack_a));
 	delete_cdll(&(meta.stack_b));
+	free(meta.blacklist);
 	ft_lstclear(&(meta.moves), &do_nothing);
 	return (0);
 }
