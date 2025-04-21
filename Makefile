@@ -1,5 +1,5 @@
 NAME			:= push_swap
-CFLAGS			:= -Wextra -Wall -Werror -Wunused -O0 -fprofile-arcs -ftest-coverage
+CFLAGS			:= -Wextra -Wall -Werror -O0
 #CFLAGS			:= 
 
 MAKEFLAGS		+= --no-print-directory
