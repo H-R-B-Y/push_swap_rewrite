@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/29 17:29:18 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/21 14:49:28 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,8 @@ void		a_mini_sort(t_push_swap *meta, size_t count);
  * @param meta - pointer to the structure with all the data
  * @param stack - pointer to the stack
  * @param sz - size of the stack
- * @return int - 1 if sorted, 0 if not
+ * @return int - 1 if sorted, 0 if notFile 'src/sorting/check_sorted.c'
+Lines executed:34.38% of 32
  */
 int			anon_is_sorted(t_push_swap *meta, t_cdll *stack, size_t sz);
 
@@ -421,7 +422,6 @@ int			ops_are_opposing(enum e_op a, enum e_op b);
  * For example, if there are RA and RB, they will be replaced with RR.
  */
 size_t		cost_reduce(t_push_swap *meta, t_list **ops);
-
 
 // LIS
 

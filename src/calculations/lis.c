@@ -6,13 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:08:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/04 16:30:02 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/21 13:55:48 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-t_cdll_node **cdll_arrayify(t_cdll *list, size_t *len);
+t_cdll_node	**cdll_arrayify(t_cdll *list, size_t *len);
 
 static void	initialise_arrays(size_t len, size_t **dp, long long int **prev)
 {
@@ -27,8 +27,6 @@ static void	initialise_arrays(size_t len, size_t **dp, long long int **prev)
 		(*prev)[i] = -1;
 		i++;
 	}
-	
-	// ft_bzero((*prev), sizeof(size_t) * len);
 }
 
 static size_t	_lis_size_idx(size_t len, size_t *dp)
@@ -52,10 +50,13 @@ static size_t	_lis_size_idx(size_t len, size_t *dp)
 	return (lis_idx);
 }
 
-static t_cdll_node	**_build_lis(size_t len, t_cdll_node **arr, size_t *dp, long long int *prev)
+static void	_populate_sizes(size_t len,
+	t_cdll_node **arr,
+	size_t *dp,
+	long long int *prev
+)
 {
-	size_t		idx[2];
-	t_cdll_node	**lis;
+	size_t	idx[2];
 
 	idx[0] = 1;
 	while (idx[0] < len)
@@ -75,16 +76,27 @@ static t_cdll_node	**_build_lis(size_t len, t_cdll_node **arr, size_t *dp, long 
 		}
 		idx[0]++;
 	}
-	// Ensure the largest subsequence length is correctly found
-	idx[0] = _lis_size_idx(len, dp); // idx[0] is now the index of the largest subsequence
-	if (dp[idx[0]] == 1) // If the longest subsequence is just a single element
+}
+
+static t_cdll_node	**_build_lis(size_t len,
+	t_cdll_node **arr,
+	size_t *dp,
+	long long int *prev
+)
+{
+	size_t		idx[2];
+	t_cdll_node	**lis;
+
+	_populate_sizes(len, arr, dp, prev);
+	idx[0] = _lis_size_idx(len, dp);
+	if (dp[idx[0]] == 1)
 	{
-		lis = malloc(sizeof(t_cdll_node *) * 1);  // Allocate for just 1 element
+		lis = malloc(sizeof(t_cdll_node *) * 1);
 		lis[0] = arr[idx[0]];
 		return (lis);
 	}
 	lis = malloc(sizeof(t_cdll_node *) * dp[idx[0]]);
-	idx[1] = dp[idx[0]] - 1; // now the size of the array;
+	idx[1] = dp[idx[0]] - 1;
 	while (idx[1] > 0)
 	{
 		lis[idx[1]] = arr[idx[0]];

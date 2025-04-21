@@ -1,5 +1,5 @@
 NAME			:= push_swap
-CFLAGS			:= -Wextra -Wall -Werror -Ofast
+CFLAGS			:= -Wextra -Wall -Werror -Wunused -O0 -fprofile-arcs -ftest-coverage
 #CFLAGS			:= 
 
 MAKEFLAGS		+= --no-print-directory
@@ -20,7 +20,6 @@ SRCS			:= \
 				$(SRC_DIR)/operations/swap_operations.c \
 				$(SRC_DIR)/operations/rot_operations.c \
 				$(SRC_DIR)/operations/push_operations.c \
-				$(SRC_DIR)/operations/get_opposite.c \
 				$(SRC_DIR)/operations/do_ops.c \
 				$(SRC_DIR)/parsing/parse_args.c \
 				$(SRC_DIR)/parsing/duplicate_check.c \
@@ -43,7 +42,6 @@ SRCS			:= \
 				$(SRC_DIR)/calculations/lis.c \
 				\
 
-
 OBJS			:= ${SRCS:.c=.o}
 
 MAIN			:= $(SRC_DIR)/main.c
@@ -62,6 +60,8 @@ $(LIBFT):
 clean:
 		@$(MAKE) --directory $(LIBFT_DIR) clean 
 		@rm -rf $(OBJS)
+		find . -name '*.gcda' -delete
+		find . -name '*.gcno' -delete
 
 rm:
 		@$(MAKE) --directory $(LIBFT_DIR) fclean
@@ -81,4 +81,23 @@ post:
 	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
 	@echo 
 
-.PHONY: all clean fclean re test pre post rm
+.PHONY: all clean fclean re test pre post rm coverage
+
+coverage:
+	rm -rf coverage_reports
+	find . -name '*.gcda' -delete
+	make --directory . re CFLAGS="-fprofile-arcs -ftest-coverage" CC=gcc-10
+	sh -c "./push_swap 9 0 1 7 10 89 -1 -78 100 98 87"
+	sleep 2
+	mkdir -p coverage_reports
+	find . -name '*.gcda' -exec mv -n {} . \;
+	find . -name '*.gcno' -exec mv -n {} . \;
+	find . -name '*.c' -exec gcov-10 -o . {} \;  >> coverage_reports.txt
+	find . -name '*.gcov' -exec mv {} coverage_reports/ \;
+	find . -name '*.gcda' -delete
+	find . -name '*.gcno' -delete
+
+
+# reference for cleanup
+# nm -C --defined-only *.o | grep ' T ' > defined.txt
+# nm -C --undefined-only *.o > undefined.txt

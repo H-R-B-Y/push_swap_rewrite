@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:08:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/29 17:47:53 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/21 13:48:11 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	sort(t_push_swap *meta)
 	if (anon_is_sorted(meta, meta->stack_a, meta->stack_a->count))
 		return ;
 	meta->blacklist = find_lis(meta, meta->stack_a);
-	while (meta->stack_a->count > meta->blacklist_size && meta->stack_a->count > 3)
+	while (meta->stack_a->count > meta->blacklist_size
+		&& meta->stack_a->count > 3)
 	{
 		while (node_is_blacklist(meta, meta->stack_a->head))
 			ra(meta, 0);
