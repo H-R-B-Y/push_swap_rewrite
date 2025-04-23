@@ -1,10 +1,11 @@
+Need to check the best LIS is actualy worth performing
+
+this check needs to be:
+distance from the top (min of the index and the (len - index -1))
+plus the difference between the best LIS previous best
 
 
-instead of relying soly on LIS to find the items to not move.
-we can keep rotating the stack, moving different items to the top to find the best place to start sorting???
+because we cannot pass metadata to the function we need to track the index and the LIS length at the same time.
 
-increasing the LIS means less moves in general, so we can find the lis for any given item in the stack. 
-
-
-this would give us the ultimate LIS?
+otherwise we could harm the performance by doing excess rotations when it is not explicitly necessary.
 
