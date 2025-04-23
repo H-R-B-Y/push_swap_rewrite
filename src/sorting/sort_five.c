@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   duplicate_check.c                                  :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 00:22:16 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/23 12:25:15 by hbreeze          ###   ########.fr       */
+/*   Created: 2025/03/29 15:08:42 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/04/23 12:08:52 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	contains_duplicate(t_cdll *stack)
+void	a_sort_five(t_push_swap *meta)
 {
-	t_cdll_node	*idx[2];
-
-	if (!stack)
-		return (0);
-	idx[0] = stack->head;
-	while (idx[0] && idx[0] != stack->tail)
+	if (meta->stack_a->count <= 3)
 	{
-		idx[1] = idx[0]->next;
-		while (idx[1] && idx[1] != stack->head)
-		{
-			if (idx[0]->data == idx[1]->data)
-				return (1);
-			idx[1] = idx[1]->next;
-		}
-		idx[0] = idx[0]->next;
+		a_mini_sort(meta, meta->stack_a->count);
+		return ;
 	}
-	return (0);
+	if (a_chunk_is_sorted(meta->stack_a, 5))
+		return ;
+	a_mini_sort(meta, 3);
+	if (a_chunk_is_sorted(meta->stack_a, 5))
+		return ;
+	rra(meta, 0);
+	rra(meta, 0);
+	a_mini_sort(meta, 3);
+	if (a_chunk_is_sorted(meta->stack_a, 5))
+		return ;
+	ra(meta, 0);
+	ra(meta, 0);
+	a_mini_sort(meta, 3);
 }

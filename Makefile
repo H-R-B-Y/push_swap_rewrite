@@ -1,5 +1,5 @@
 NAME			:= push_swap
-CFLAGS			:= -Wextra -Wall -Werror -O0
+CFLAGS			:= -Wextra -Wall -Werror -O0 -g3
 #CFLAGS			:= 
 
 MAKEFLAGS		+= --no-print-directory
@@ -34,12 +34,14 @@ SRCS			:= \
 				$(SRC_DIR)/sorting/mini_sort.c \
 				$(SRC_DIR)/sorting/rotate_to_top.c \
 				$(SRC_DIR)/sorting/sort_recursive.c \
+				$(SRC_DIR)/sorting/sort_five.c \
 				$(SRC_DIR)/calculations/find_correct_place.c \
 				$(SRC_DIR)/calculations/optimal_push.c \
 				$(SRC_DIR)/calculations/cost_reduction.c \
 				$(SRC_DIR)/calculations/util.c \
 				$(SRC_DIR)/calculations/node_is_blacklist.c \
 				$(SRC_DIR)/calculations/lis.c \
+				$(SRC_DIR)/calculations/find_best_lis.c \
 				\
 
 OBJS			:= ${SRCS:.c=.o}

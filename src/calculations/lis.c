@@ -6,15 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:08:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/21 13:55:48 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/23 12:20:54 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-t_cdll_node	**cdll_arrayify(t_cdll *list, size_t *len);
-
-static void	initialise_arrays(size_t len, size_t **dp, long long int **prev)
+void	initialise_arrays(size_t len, size_t **dp, long long int **prev)
 {
 	size_t	i;
 
@@ -29,7 +27,7 @@ static void	initialise_arrays(size_t len, size_t **dp, long long int **prev)
 	}
 }
 
-static size_t	_lis_size_idx(size_t len, size_t *dp)
+size_t	_lis_size_idx(size_t len, size_t *dp, size_t *lislen)
 {
 	size_t	idx;
 	size_t	lis_len;
@@ -47,10 +45,12 @@ static size_t	_lis_size_idx(size_t len, size_t *dp)
 		}
 		idx++;
 	}
+	if (lislen)
+		*lislen = lis_len;
 	return (lis_idx);
 }
 
-static void	_populate_sizes(size_t len,
+void	_populate_sizes(size_t len,
 	t_cdll_node **arr,
 	size_t *dp,
 	long long int *prev
@@ -78,7 +78,7 @@ static void	_populate_sizes(size_t len,
 	}
 }
 
-static t_cdll_node	**_build_lis(size_t len,
+t_cdll_node	**_build_lis(size_t len,
 	t_cdll_node **arr,
 	size_t *dp,
 	long long int *prev
@@ -88,7 +88,7 @@ static t_cdll_node	**_build_lis(size_t len,
 	t_cdll_node	**lis;
 
 	_populate_sizes(len, arr, dp, prev);
-	idx[0] = _lis_size_idx(len, dp);
+	idx[0] = _lis_size_idx(len, dp, 0);
 	if (dp[idx[0]] == 1)
 	{
 		lis = malloc(sizeof(t_cdll_node *) * 1);
@@ -107,20 +107,22 @@ static t_cdll_node	**_build_lis(size_t len,
 	return (lis);
 }
 
-t_cdll_node	**find_lis(t_push_swap *meta, t_cdll *stack)
+t_cdll_node	**find_lis(t_push_swap *meta, t_cdll *stack, size_t	*length)
 {
 	size_t			len;
 	size_t			*dp;
-	long long int	*prev;
 	t_cdll_node		**arr;
 	t_cdll_node		**lis;
+	long long int	*prev;
 
+	(void) meta;
 	if (!stack || !stack->head)
 		return (NULL);
 	arr = cdll_arrayify(stack, &len);
 	initialise_arrays(len, &dp, &prev);
 	lis = _build_lis(len, arr, dp, prev);
-	meta->blacklist_size = dp[_lis_size_idx(len, dp)];
+	if (length)
+		*length = dp[_lis_size_idx(len, dp, 0)];
 	free(dp);
 	free(arr);
 	free(prev);

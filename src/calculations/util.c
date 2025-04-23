@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:42:20 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/29 17:33:56 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/21 17:33:15 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_cdll_node	**cdll_arrayify(t_cdll *list, size_t *len)
 	t_cdll_node	**output;
 	t_cdll_node	*i;
 
-	*len = 0;
 	if (!list || !len || list->count == 0)
 		return ((void *)0);
+	*len = 0;
 	output = malloc(sizeof(t_cdll_node *) * (list->count + 1));
 	ft_bzero(output, sizeof(t_cdll_node *) * (list->count + 1));
 	i = list->head;

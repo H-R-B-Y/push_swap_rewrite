@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 13:13:23 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/16 13:36:09 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/23 12:25:24 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ int	_push(t_cdll *from, t_cdll *too)
 	cdll_push_front(too, node);
 	return (1);
 }
-/*
-From B to A
-*/
 
 void	pa(t_push_swap *meta, int silent)
 {

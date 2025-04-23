@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/21 14:49:28 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/23 12:23:35 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,13 @@ void		b_mini_sort(t_push_swap *meta, size_t count);
  * @return void
  */
 void		a_mini_sort(t_push_swap *meta, size_t count);
+
+/**
+ * @brief sorts 5 elements at the top of stack a
+ * @param meta the metadata for push swap
+ * @returns void
+ */
+void		a_sort_five(t_push_swap *meta);
 
 /**
  * @brief Check a stack is sorted
@@ -425,11 +432,69 @@ size_t		cost_reduce(t_push_swap *meta, t_list **ops);
 
 // LIS
 
+/**
+ * @brief Turn a CDLL into an array (not null terminated)
+ * @param list the cdll to turn into an array
+ * @param len pointer to a variable to store the size of the array.
+ */
 t_cdll_node	**cdll_arrayify(t_cdll *list, size_t *len);
 
+/**
+ * @brief Check if a node is stored in the push swap blacklist
+ * @param meta the push swap metadata
+ * @param node the node to check
+ * @returns 1 if node is blacklisted else 0
+ */
 int			node_is_blacklist(t_push_swap *meta, t_cdll_node *node);
 
-t_cdll_node	**find_lis(t_push_swap *meta, t_cdll *stack);
+/**
+ * @brief Find the longest increasing sequence of nodes in a stack.
+ * @param meta the push swap meta data
+ * @param stack the stack to search for the lis
+ * @param length pointer to variable to store the size of the lis
+ * @returns array of nodes that are part of the lis
+ */
+t_cdll_node	**find_lis(t_push_swap *meta, t_cdll *stack, size_t	*length);
+
+/**
+ * @brief helper function for lis to inisialise the dp and prev arrays
+ * @param len the size of the arraysvoid		a_sort_five(t_push_swap *meta);
+ * @param dp pointer to the dp array
+ * @param prev pointer to the prev array
+ */
+void		initialise_arrays(size_t len, size_t **dp, long long int **prev);
+
+/**
+ * @brief internal function for LIS, populates the dp and prev arrays
+ * @param len length of the array to search for lis
+ * @param arr pointer to the array of nodes to search
+ * @param dp the dp array
+ * @param prev the prev array
+ */
+void		_populate_sizes(size_t len, t_cdll_node **arr,
+				size_t *dp, long long int *prev);
+
+/**
+ * @brief internal function for LIS, returns address of LIS size
+ * @param len the length of the array
+ * @param dp the dp array
+ * @param prev the prev array
+ * @param lislen pointer to variable to store the length of the lis.
+ * @returns array index for the dp array storing the lis size
+ * 
+ * This function sucks, it returns the index of the array elem
+ * that contains the lis size, but also takes a variable pointer 
+ * to store the size??? whats that about.
+ */
+size_t		_lis_size_idx(size_t len, size_t *dp, size_t *lislen);
+
+/**
+ * @brief finds the best lis and rotates stack into best position
+ * @param meta the push swap meta data
+ * @param stack the stack to track for lis
+ * @param length pointer to variable to store the length of the lis in
+ */
+t_cdll_node	**find_best_lis(t_push_swap *meta, t_cdll *stack, size_t *length);
 
 // DEBUG
 /**
