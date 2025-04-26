@@ -1,7 +1,6 @@
 *.o
 *.pdf
 *.log
-*.py
 *.pyc
 *.out
 *.sh
@@ -11,4 +10,3 @@ __pycache__
 push_swap
 checker
 checker_linux
-test
