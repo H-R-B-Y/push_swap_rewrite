@@ -48,17 +48,23 @@ OBJS			:= ${SRCS:.c=.o}
 
 MAIN			:= $(SRC_DIR)/main.c
 
-all: $(NAME) pre post
+all: $(NAME)
 
 $(NAME): $(MAIN) $(OBJS) $(LIBFT) ./include/push_swap.h
+		@echo
+		@echo "   /)  /)",
+		@echo " ପ(˶•-•˶)ଓ ♡",
+		@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: Wait  ꒱ ‧₊˚⭒"
 		@$(CC) $(CFLAGS) $(MAIN) $(OBJS) $(LIBFT) $(LIBFLAGS) -o $(NAME)
+		@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
+		@echo 
 
 $(LIBFT):
 		@$(MAKE) --directory $(LIBFT_DIR) all CFLAGS="$(CFLAGS)"
 
 bonus:
 		@$(MAKE) --directory checker_bonus all CFLAGS="$(CFLAGS)"
-		@mv checker_bonus/checker .
+		@cp checker_bonus/checker .
 
 .c.o:
 		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
@@ -71,22 +77,23 @@ clean:
 
 rm:
 		@$(MAKE) --directory $(LIBFT_DIR) fclean
+		@$(MAKE) --directory checker_bonus fclean
 		@rm -rf $(NAME)
-		@rm checker
+		@rm -rf checker
 
 fclean: clean rm pre post
 
 re: fclean all
 
 pre:
-	@echo
-	@echo "   /)  /)",
-	@echo " ପ(˶•-•˶)ଓ ♡",
-	@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: $(MAKECMDGOALS) :: Wait  ꒱ ‧₊˚⭒"
+		@echo
+		@echo "   /)  /)",
+		@echo " ପ(˶•-•˶)ଓ ♡",
+		@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: $(MAKECMDGOALS) :: Wait  ꒱ ‧₊˚⭒"
 
 post:
-	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
-	@echo 
+		@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
+		@echo 
 
 .PHONY: all clean fclean re test pre post rm coverage
 
