@@ -46,7 +46,7 @@
 			"request": "launch",
 			"program": "${workspaceRoot}/checker_bonus/checker",
 			"args": [
-				"32596", "23130", "-68772", "-61640", "73947", "-84351", "-37469", "2938", "-5072", "71968"
+				"7", "5", "6"
 			],
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
@@ -64,8 +64,7 @@
 					"text": "-gdb-set disassembly-flavor intel",
 					"ignoreFailures": true
 				}
-			],
-			"preLaunchTask": "Default Make"
+			]
 		}
 	]
 }

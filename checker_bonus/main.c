@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:38:25 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 16:20:01 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/26 13:58:58 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_bzero(&meta, sizeof(t_push_swap));
 	meta.stack_a = init_cdll();
-	if (parse_args(argc - 1, argv + 1, &meta.stack_a)
+	if (parse_args(argc, argv + 1, &meta.stack_a)
 		|| contains_duplicate(meta.stack_a))
-		return (cleanup(&meta, 1, "ERROR"));
+		return (cleanup(&meta, 1, "Error"));
 	sz = meta.stack_a->count;
 	meta.stack_b = init_cdll();
 	if (!append_all_ops(&meta))
-		return (cleanup(&meta, 1, "ERROR"));
+		return (cleanup(&meta, 1, "Error"));
 	do_ops(&meta, meta.moves, 1);
 	if (meta.stack_a->count != sz
 		|| !a_chunk_is_sorted(meta.stack_a, meta.stack_a->count))
