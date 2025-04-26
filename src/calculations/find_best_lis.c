@@ -6,13 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:08:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/23 16:27:43 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/26 12:54:42 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void _quick_clean(size_t len, size_t **dp, long long int **prev)
+void	_quick_clean(size_t len, size_t **dp, long long int **prev)
 {
 	size_t	i;
 
@@ -95,14 +95,10 @@ t_cdll_node	**find_best_lis(t_push_swap *meta, t_cdll *stack, size_t *length)
 	initialise_arrays(i[0], &dp, &prev);
 	best = loop_biggest(i[0], arr, dp, prev);
 	if (best)
-	{
-		// ft_printf("Rotating node %d to the top\n", best->data);
 		rotate_to_top(meta, best, stack);
-		// ft_printf("Top node value is %d\n", meta->stack_a->head->data);
-	}
 	free(dp);
 	free(arr);
 	free(prev);
-	t_cdll_node **output = find_lis(meta, stack, length);
-	return (output);
+	arr = find_lis(meta, stack, length);
+	return (arr);
 }

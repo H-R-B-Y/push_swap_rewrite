@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:59:44 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 16:07:46 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/26 13:05:29 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	is_valid_int(char *str, int *out)
 	sign = 1;
 	i = 0;
 	limit = 2147483647;
+	if (!str || !*str)
+		return (0);
 	while (*str && ft_iswhitespace(*str))
 		str++;
 	while (*str && ft_strchr("-+", *str))
@@ -50,13 +52,13 @@ int	parse_args(int argc, char **argv, t_cdll **stack_a)
 
 	if (!(*stack_a))
 		return (1);
-	while (argc)
+	argc--;
+	while (argc--)
 	{
-		if (!is_valid_int(argv[argc - 1], &data))
+		if (!is_valid_int(argv[argc], &data))
 			return (2);
 		if (!cdll_push_front(*stack_a, init_node(data)))
 			return (4);
-		argc--;
 	}
 	return (0);
 }

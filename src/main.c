@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:15:09 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/26 11:59:57 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/26 13:01:51 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	redo(t_push_swap *meta, int argc, char **argv)
 		meta->move_count = 0;
 		sort_quick_start(meta, start);
 		push_back(meta);
-		rotate_to_top(meta, meta->stack_a->min_node, meta->stack_a);
 		start += 0.05;
 		meta->move_count = ft_lstsize(meta->moves);
 	}
@@ -43,7 +42,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_bzero(&meta, sizeof(t_push_swap));
 	meta.stack_a = init_cdll();
-	if (parse_args(argc - 1, argv + 1, &meta.stack_a)
+	if (parse_args(argc, argv + 1, &meta.stack_a)
 		|| contains_duplicate(meta.stack_a))
 	{
 		ft_putendl_fd("Error", 2);
