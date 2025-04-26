@@ -3,7 +3,8 @@
 		"libft.h": "c",
 		"cdll.h": "c",
 		"push_swap.h": "c",
-		"checker.h": "c"
+		"checker.h": "c",
+		"ft_printf.h": "c"
 	},
 	"C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
