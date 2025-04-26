@@ -1,6 +1,0 @@
-[submodule "lib42"]
-	path = lib42
-	url = git@github.com:H-R-B-Y/lib42.git
-[submodule "lib/libft"]
-	path = lib/libft
-	url = git@github.com:H-R-B-Y/lib42.git
