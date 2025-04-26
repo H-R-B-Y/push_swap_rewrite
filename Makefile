@@ -56,18 +56,23 @@ $(NAME): $(MAIN) $(OBJS) $(LIBFT) ./include/push_swap.h
 $(LIBFT):
 		@$(MAKE) --directory $(LIBFT_DIR) all CFLAGS="$(CFLAGS)"
 
+bonus:
+		@$(MAKE) --directory checker_bonus all CFLAGS="$(CFLAGS)"
+		@mv checker_bonus/checker .
+
 .c.o:
 		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 clean:
 		@$(MAKE) --directory $(LIBFT_DIR) clean 
 		@rm -rf $(OBJS)
-		find . -name '*.gcda' -delete
-		find . -name '*.gcno' -delete
+		@find . -name '*.gcda' -delete
+		@find . -name '*.gcno' -delete
 
 rm:
 		@$(MAKE) --directory $(LIBFT_DIR) fclean
 		@rm -rf $(NAME)
+		@rm checker
 
 fclean: clean rm pre post
 
