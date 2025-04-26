@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:27:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 15:59:21 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/24 15:15:32 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,11 @@ void	b_optimal_push(t_push_swap *meta)
 	ft_bzero(p, sizeof(t_list *) * 2);
 	while (i < meta->stack_a->count)
 	{
-		p_count[1] = create_operations_list(meta, meta->stack_a, node, &p[1]);
-		swap_on_count(&p[0], &p_count[0], &p[1], &p_count[1]);
+		if (!node_is_blacklist(meta, node))
+		{
+			p_count[1] = create_operations_list(meta, meta->stack_a, node, &p[1]);
+			swap_on_count(&p[0], &p_count[0], &p[1], &p_count[1]);
+		}
 		node = node->next;
 		i++;
 	}

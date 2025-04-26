@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/23 12:23:35 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/24 16:24:15 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		do_nothing(void *ptr);
  * @param meta - pointer to the structure with all the data
  * @return void
  */
-void		sort(t_push_swap *meta);
+void		sort(t_push_swap *meta, float initial_sort);
 
 /**
  * @brief Rotates a element in the stack to the top
