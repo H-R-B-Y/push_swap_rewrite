@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 12:59:44 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/26 13:05:29 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/26 14:20:58 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,22 @@ int	is_valid_int(char *str, int *out)
 
 int	parse_args(int argc, char **argv, t_cdll **stack_a)
 {
-	int	data;
+	int		data;
+	char	**split;
 
 	if (!(*stack_a))
 		return (1);
 	argc--;
 	while (argc--)
 	{
+		if (ft_strchr(argv[argc], ' '))
+		{
+			split = ft_split(argv[argc], ' ');
+			if (parse_args(ft_arrlen((void *)split) + 1, split, stack_a))
+				return (ft_arrclear((void *)split, free), 1);
+			ft_arrclear((void *)split, free);
+			continue ;
+		}
 		if (!is_valid_int(argv[argc], &data))
 			return (2);
 		if (!cdll_push_front(*stack_a, init_node(data)))
