@@ -35,6 +35,7 @@ SRCS			:= \
 				$(SRC_DIR)/sorting/rotate_to_top.c \
 				$(SRC_DIR)/sorting/sort_recursive.c \
 				$(SRC_DIR)/sorting/sort_five.c \
+				$(SRC_DIR)/sorting/sort_three_only.c \
 				$(SRC_DIR)/calculations/find_correct_place.c \
 				$(SRC_DIR)/calculations/optimal_push.c \
 				$(SRC_DIR)/calculations/cost_reduction.c \
