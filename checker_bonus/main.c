@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 12:38:25 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/27 16:20:01 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/28 14:42:40 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_bzero(&meta, sizeof(t_push_swap));
 	meta.stack_a = init_cdll();
-	if (parse_args(argc - 1, argv + 1, &meta.stack_a)
+	if (parse_args(argc, argv + 1, &meta.stack_a)
 		|| contains_duplicate(meta.stack_a))
 		return (cleanup(&meta, 1, "ERROR"));
 	sz = meta.stack_a->count;
