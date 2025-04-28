@@ -50,13 +50,52 @@ def main():
 	parser.add_argument("--log_100_min", type=int, default=0, help="Minimum operations required to be logged (100)")
 	parser.add_argument("--log_500_min", type=int, default=0, help="Minimum operations required to be logged (500)")
 	parser.add_argument("--log_5_min", type=int, default=0, help="Minimum operations required to be logged (5)")
+	parser.add_argument("--log_3_min", type=int, default=0, help="Minimum operations required to be logged (3)")
 
 	args = parser.parse_args()
 	
 	# Print current working directory
 	print(args.log)
 	# Plotting the results
-	plt.figure(figsize=(18, 6))
+	plt.figure(figsize=(12, 12))
+
+	operations_3_data = collect_data(args.executable, 3, args.num_runs, max_workers=args.threads)
+	operations_3 = [operations_3_data[x][0] for x in range(len(operations_3_data))]
+
+	# Log data for 5 elements if logging is enabled
+	if args.log == True:
+		data = operations_3_data
+		if (args.log_3_min > 0):
+			data = list(filter(lambda x: x[0] >= args.log_3_min, data))
+		with open("./data_3_runs.json", "w+") as file:
+			clean_data = {
+				f"run_{x}_cost_{data[x][0]}" : {
+					"cost" : data[x][0],
+					"items" : data[x][1]
+				}
+				for x in range(len(data))
+			}
+			text = json.dumps(clean_data, indent=4)
+			file.write(text)
+	
+	# Calculate statistics for 5 elements
+	mean_3 = statistics.mean(operations_3)
+	median_3 = statistics.median(operations_3)
+	mode_3 = statistics.mode(operations_3)
+	stdev_3 = statistics.stdev(operations_3)
+	min_3 = min(operations_3)
+	max_3 = max(operations_3)
+
+	# Plot for 3 elements
+	plt.subplot(2, 2, 1)
+	plt.hist(operations_3, bins=10, color='pink', edgecolor='black')
+	plt.title("Operations to Sort 3 Random Numbers")
+	plt.xlabel("Number of Operations")
+	plt.ylabel("Frequency")
+	plt.text(0.7, 0.7, f"Mean: {mean_3:.2f}\nMedian: {median_3}\nMode: {mode_3}\nStd Dev: {stdev_3:.2f}\nMin: {min_3}\nMax: {max_3}",
+			transform=plt.gca().transAxes, fontsize=9, bbox=dict(facecolor='white', alpha=0.5))
+
+
 
 	operations_5_data = collect_data(args.executable, 5, args.num_runs, max_workers=args.threads)
 	operations_5 = [operations_5_data[x][0] for x in range(len(operations_5_data))]
@@ -86,7 +125,7 @@ def main():
 	max_5 = max(operations_5)
 
 	# Plot for 5 elements
-	plt.subplot(1, 3, 1)
+	plt.subplot(2, 2, 2)
 	plt.hist(operations_5, bins=10, color='lightgreen', edgecolor='black')
 	plt.title("Operations to Sort 5 Random Numbers")
 	plt.xlabel("Number of Operations")
@@ -123,7 +162,7 @@ def main():
 	max_100 = max(operations_100)
 
 	# Plot for 100 elements
-	plt.subplot(1, 3, 2)
+	plt.subplot(2, 2, 3)
 	plt.hist(operations_100, bins=20, color='skyblue', edgecolor='black')
 	plt.title("Operations to Sort 100 Random Numbers")
 	plt.xlabel("Number of Operations")
@@ -158,7 +197,7 @@ def main():
 	max_500 = max(operations_500)
 
 	# Plot for 500 elements
-	plt.subplot(1, 3, 3)
+	plt.subplot(2, 2, 4)
 	plt.hist(operations_500, bins=20, color='salmon', edgecolor='black')
 	plt.title("Operations to Sort 500 Random Numbers")
 	plt.xlabel("Number of Operations")
