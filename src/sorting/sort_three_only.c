@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_five.c                                        :+:      :+:    :+:   */
+/*   sort_three_only.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 15:08:42 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/28 13:25:32 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/28 12:45:29 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-// Need to re-implement this code:
+// void	sort_three(t_stack **head)
+// {
+// 	int	biggest;
 
-void	a_sort_five(t_push_swap *meta)
+// 	biggest = find_biggest(*head);
+// 	if ((*head)->index == biggest)
+// 		rotate_a(head);
+// 	else if ((*head)->next->index == biggest)
+// 		r_rotate_a(head);
+// 	if ((*head)->index > (*head)->next->index)
+// 		swap_a(head);
+// }
+
+void	a_sort_three_only(t_push_swap *meta, t_cdll	*st)
 {
-	size_t	ct;
-	
-	if (meta->stack_a->count <= 3)
-	{
-		a_mini_sort(meta, meta->stack_a->count);
+	if (a_chunk_is_sorted(st, meta->stack_a->count))
 		return ;
-	}
-	ct = 0;
-	while(meta->stack_a->count > 3 && ++ct)
-	{
-		rotate_to_top(meta, meta->stack_a->min_node, meta->stack_a);
-		pb(meta, 0);
-	}
-	a_mini_sort(meta, 3);
-	while (ct--)
-		a_optimal_push(meta);
-	rotate_to_top(meta, meta->stack_a->min_node, meta->stack_a);
+	if (st->head == st->max_node)
+		ra(meta, 0);
+	else if (st->head->next == st->max_node)
+		rra(meta, 0);
+	if (st->head->data > st->head->next->data)
+		sa(meta, 0);
 }

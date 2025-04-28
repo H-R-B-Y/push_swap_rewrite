@@ -6,11 +6,13 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:26:13 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/23 11:34:58 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/28 12:33:46 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+void	a_sort_three_only(t_push_swap *meta, t_cdll	*st);
 
 void	a_micro_sort(t_push_swap *meta)
 {
@@ -24,6 +26,8 @@ void	a_mini_sort(t_push_swap *meta, size_t count)
 {
 	if (!meta || count < 2 || meta->stack_a->count < 2)
 		return ;
+	if (meta->stack_a->count == 3)
+		a_sort_three_only(meta, meta->stack_a);
 	if (a_chunk_is_sorted(meta->stack_a, count))
 		return ;
 	if (count == 2)
