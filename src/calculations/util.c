@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 17:42:20 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/21 17:33:15 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/29 12:09:17 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ size_t	my_min(size_t a, size_t b)
 	if (a < b)
 		return (a);
 	return (b);
+}
+
+long int	my_labs(long int a)
+{
+	if (a < 0)
+		a *= -1;
+	return (a);
 }
 
 t_cdll_node	**cdll_arrayify(t_cdll *list, size_t *len)

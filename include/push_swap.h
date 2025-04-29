@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:14:39 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/04/26 17:15:35 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/04/29 12:09:56 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -510,5 +510,12 @@ void		print_stacks(t_push_swap *meta);
  * @return void
  */
 void		print_stack(t_cdll *st);
+
+/**
+ * @brief Simple abs for long int
+ * @param a a long int
+ * @return absolute value of a
+ */
+long int	my_labs(long int a);
 
 #endif
