@@ -32,11 +32,9 @@ SRCS			:= \
 				$(SRC_DIR)/debug/print_opperations.c \
 				$(SRC_DIR)/sorting/check_sorted.c \
 				$(SRC_DIR)/sorting/mini_sort.c \
-				$(SRC_DIR)/sorting/quick_select.c \
 				$(SRC_DIR)/sorting/rotate_to_top.c \
 				$(SRC_DIR)/sorting/sort_recursive.c \
 				$(SRC_DIR)/sorting/sort_five.c \
-				$(SRC_DIR)/sorting/sort_three_only.c \
 				$(SRC_DIR)/calculations/find_correct_place.c \
 				$(SRC_DIR)/calculations/optimal_push.c \
 				$(SRC_DIR)/calculations/cost_reduction.c \
@@ -50,13 +48,23 @@ OBJS			:= ${SRCS:.c=.o}
 
 MAIN			:= $(SRC_DIR)/main.c
 
-all: $(NAME) pre post
+all: $(NAME)
 
 $(NAME): $(MAIN) $(OBJS) $(LIBFT) ./include/push_swap.h
+		@echo
+		@echo "   /)  /)",
+		@echo " ପ(˶•-•˶)ଓ ♡",
+		@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: Wait  ꒱ ‧₊˚⭒"
 		@$(CC) $(CFLAGS) $(MAIN) $(OBJS) $(LIBFT) $(LIBFLAGS) -o $(NAME)
+		@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
+		@echo 
 
 $(LIBFT):
 		@$(MAKE) --directory $(LIBFT_DIR) all CFLAGS="$(CFLAGS)"
+
+bonus:
+		@$(MAKE) --directory checker_bonus all CFLAGS="$(CFLAGS)"
+		@cp checker_bonus/checker .
 
 .c.o:
 		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
@@ -64,26 +72,28 @@ $(LIBFT):
 clean:
 		@$(MAKE) --directory $(LIBFT_DIR) clean 
 		@rm -rf $(OBJS)
-		find . -name '*.gcda' -delete
-		find . -name '*.gcno' -delete
+		@find . -name '*.gcda' -delete
+		@find . -name '*.gcno' -delete
 
 rm:
 		@$(MAKE) --directory $(LIBFT_DIR) fclean
+		@$(MAKE) --directory checker_bonus fclean
 		@rm -rf $(NAME)
+		@rm -rf checker
 
 fclean: clean rm pre post
 
 re: fclean all
 
 pre:
-	@echo
-	@echo "   /)  /)",
-	@echo " ପ(˶•-•˶)ଓ ♡",
-	@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: $(MAKECMDGOALS) :: Wait  ꒱ ‧₊˚⭒"
+		@echo
+		@echo "   /)  /)",
+		@echo " ପ(˶•-•˶)ଓ ♡",
+		@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: $(MAKECMDGOALS) :: Wait  ꒱ ‧₊˚⭒"
 
 post:
-	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
-	@echo 
+		@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
+		@echo 
 
 .PHONY: all clean fclean re test pre post rm coverage
 
